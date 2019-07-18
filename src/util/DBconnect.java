@@ -3,13 +3,31 @@ package util;
 import java.sql.*;
 
 public class DBconnect {
-    static String url="jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC";
-    static String user="root";
-    static String pw = "wangqidi";
+//    static String url="jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC";
+//    static String user="root";
+//    static String pw = "wangqidi";
+
+    static String url = "jdbc:mysql://localhost:3306/pjdata?serverTimezone=UTC";
+    static String user = "root";
+    static String pw = "123456";
+
     static Connection conn=null;
     static PreparedStatement ps=null;
     static ResultSet rs=null;
     static Statement st=null;
+
+
+    public static Connection getConnection() throws  SQLException {
+//        String jdbcUrl = "jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC";
+//        String user = "root";
+//        String password = "wangqidi";
+
+        String jdbcUrl = "jdbc:mysql://localhost:3306/pjdata?serverTimezone=UTC";
+        String user = "root";
+        String password = "123456";
+        return  DriverManager.getConnection(jdbcUrl,user,password);
+    }
+
     public static void init() throws SQLException, ClassNotFoundException {//SQl程序初始化
         try{
             Class.forName("com.mysql.jdbc.Driver");//注册驱动
@@ -19,6 +37,7 @@ public class DBconnect {
             e.printStackTrace();
         }
     }
+
     public static int addUpdateDelete(String sql){
         int i=0;
         try{
@@ -38,13 +57,13 @@ public class DBconnect {
         try{
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
-
         }catch(Exception e){
             System.out.println("数据库查询异常");
             e.printStackTrace();
         }
         return rs;
     }
+
     public static  void closeConn(){
         try{
             conn.close();
@@ -53,5 +72,32 @@ public class DBconnect {
             e.printStackTrace();
         }
     }
+
+    public static void closeAll(Connection conn, Statement stmt, ResultSet rs){
+        if(rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }

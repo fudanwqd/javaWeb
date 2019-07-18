@@ -13,50 +13,50 @@
 <body>
 
 
-    <div class="divBorder">
-        <div class="form-inline">
-            <div class="input-group">
-                <h2>我的好友</h2>
-                <div class="card">
-                    <div class="card-header">好友1</div>
-                    <div class="card-body">
-
-                    </div>
+<div class="divBorder">
+    <div class="form-inline">
+        <div class="input-group">
+            <h2>我的好友</h2>
+            <div class="card">
+                <div class="card-header">好友1</div>
+                <div class="card-body">
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
-    <div class="divBorder">
-        <div class="form-inline">
-            <div class="input-group">
-                <h2>好友请求</h2>
-                <div class="card">
-                    <div class="card-header">好友请求1</div>
-                    <div class="card-body">
-
-                    </div>
+<div class="divBorder">
+    <div class="form-inline">
+        <div class="input-group">
+            <h2>好友请求</h2>
+            <div class="card">
+                <div class="card-header">好友请求1</div>
+                <div class="card-body">
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
-    <div class="divBorder">
-        <div class="form-inline">
-            <div class="input-group">
-                <h2>我的请求</h2>
-                <div class="card">
-                    <div class="card-header">请求1</div>
-                    <div class="card-body">
-
-                    </div>
+<div class="divBorder">
+    <div class="form-inline">
+        <div class="input-group">
+            <h2>我的请求</h2>
+            <div class="card">
+                <div class="card-header">请求1</div>
+                <div class="card-body">
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
 
 

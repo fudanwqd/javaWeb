@@ -66,7 +66,7 @@
                     <td>上海博物馆</td>
                     <td>走过路过别错过</td>
                     <td>
-                        <a href="Information.jsp" class="btn left20" role="button">
+                        <a href="SettingArtwork.jsp" class="btn left20" role="button">
                             <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修 改</a>
                         <a href="" class="btn left20" role="button">
                             <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
