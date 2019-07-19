@@ -12,8 +12,22 @@ public class User {
     private ArrayList<String> collections;
     private ArrayList<String> friends;
     private Date recentSignUp;
+    private String signature;
 
-    public User(int id, String name, String password, boolean privilege, String email, ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp) {
+    public boolean isPrivilege() {
+        return privilege;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public User(int id , String name, String password, boolean privilege, String email,
+                ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp,String signature) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -22,6 +36,33 @@ public class User {
         this.collections = collections;
         this.friends = friends;
         this.recentSignUp = recentSignUp;
+        this.signature = signature;
+    }
+    public User(String name, String password, boolean privilege, String email, ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp) {
+        this.name = name;
+        this.password = password;
+        this.privilege = privilege;
+        this.email = email;
+        this.collections = collections;
+        this.friends = friends;
+        this.recentSignUp = recentSignUp;
+    }
+    public User(){
+
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", privilege=" + privilege +
+                ", email='" + email + '\'' +
+                ", collections=" + collections +
+                ", friends=" + friends +
+                ", recentSignUp=" + recentSignUp +
+                '}';
     }
 
     public String getEmail() {
