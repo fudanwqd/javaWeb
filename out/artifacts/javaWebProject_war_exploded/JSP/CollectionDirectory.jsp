@@ -49,33 +49,8 @@
     }
 </style>
 <body>
-<header class="main-header">
-    <a href=" " class="logo">
-        <span class="logo-mini"><b>ZK</b>JZ</span>
-        <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
-    </a>
+<jsp:include page="header.jsp"></jsp:include>
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">个人信息</a></li>
-                            <li><a href="#">好友列表</a></li>
-                            <li><a href="#">收藏夹</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">退出登录</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 
 <section>
 

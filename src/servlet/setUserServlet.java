@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static dao.UserDao.update;
 
-@WebServlet(name = "setUserServlet")
+@WebServlet("/setUser")
 public class setUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");

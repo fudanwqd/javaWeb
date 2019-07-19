@@ -25,6 +25,8 @@
     <title>添加用户</title>
 </head>
 <body >
+<jsp:include page="header.jsp"></jsp:include>
+
 <div class="container-fluid panel-body" style="padding-bottom:0px">
     <form class="form-horizontal" id="formAdd" action="#" method="post">
 
@@ -35,6 +37,7 @@
             </h4>
 
             <div class="panel-body">
+                <form method="POST" action="/login">
                 <div class="form-group">
                     <label class="col-sm-1 control-label"><span style="color: red;font-weight: bold">＊</span>用户名:</label>
                     <div class="col-sm-4">
@@ -57,6 +60,7 @@
                         <input type="text" class="form-control" name="userName" placeholder="电子邮箱">
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 

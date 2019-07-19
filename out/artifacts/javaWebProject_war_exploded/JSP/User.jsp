@@ -1,7 +1,8 @@
 <%@ page import="entity.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="util.DBconnect" %>
-<%@ page import="dao.UserDao" %><%--
+<%@ page import="dao.UserDao" %>
+<%@ page import="static dao.UserDao.getUser" %><%--
   Created by IntelliJ IDEA.
   User: Water
   Date: 2019/7/14
@@ -22,14 +23,23 @@
     <link rel="stylesheet" type="text/css" href="../css/myCommon.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-tab.css">
 
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/adminlte.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-table-treegrid.js"></script>
+    <script src="../js/jquery.treegrid.min.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
 </head>
 <body>
 
 <%
-    User user = (User) session.getAttribute("user");
+    String sql1 = "SELECT * FROM USERS WHERE ID = 1";
+    User user = getUser(sql1);
 %>
 <header class="main-header">
-    <a href=" " class="logo">
+    <a href="Home.jsp" class="logo">
         <span class="logo-mini"><b>ZK</b>JZ</span>
         <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
     </a>
@@ -42,6 +52,7 @@
                     <li><a href="Search.jsp">搜索</a></li>
 
                     <%
+                        //    User user = (User) session.getAttribute("user");
                         if (user != null){
                     %>
 
@@ -88,8 +99,14 @@
                 <li class="header"><span class="fa-lg">管理菜单</span></li>
                 <li><a href="../JSP/CollectionDirectory.jsp"><i class="fa fa-link"></i> <span>收藏夹</span></a></li>
                 <li><a href="../JSP/Friends.jsp"><i class="fa fa-link"></i> <span>好友列表</span></a></li>
+                <%
+                    if (user.getPrivilege()){
+                %>
                 <li><a href="../JSP/UserManage.jsp"><i class="fa fa-link"></i> <span>人员管理</span></a></li>
                 <li><a href="../JSP/WorkManage.jsp"><i class="fa fa-link"></i> <span>作品管理</span></a></li>
+                <%
+                    }
+                %>
             </ul>
         </section>
     </aside>

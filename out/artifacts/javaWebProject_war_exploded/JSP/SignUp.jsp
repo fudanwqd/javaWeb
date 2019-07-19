@@ -28,17 +28,14 @@
             margin-right:-4px;
         }
     </style>
-
 </head>
-
 <body>
-
 
 <div class="container">
     <div class="row row-centered">
         <div class="col-md-6 col-centered">
             <h2 style="text-align: center">欢迎登录</h2>
-            <form action="/signUpServlet" method="post" role="form">
+            <form action="/signUp" method="post" role="form" >
                 <div class="input-group input-group-md">
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名"/>
