@@ -1,7 +1,8 @@
 <%@ page import="entity.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="util.DBconnect" %>
-<%@ page import="dao.UserDao" %><%--
+<%@ page import="dao.UserDao" %>
+<%@ page import="static dao.UserDao.getUser" %><%--
   Created by IntelliJ IDEA.
   User: Water
   Date: 2019/7/14
@@ -22,59 +23,23 @@
     <link rel="stylesheet" type="text/css" href="../css/myCommon.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-tab.css">
 
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/adminlte.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-table-treegrid.js"></script>
+    <script src="../js/jquery.treegrid.min.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
 </head>
 <body>
 
 <%
-    User user = (User) session.getAttribute("user");
+    String sql1 = "SELECT * FROM USERS WHERE ID = 1";
+    User user = getUser(sql1);
 %>
-<header class="main-header">
-    <a href=" " class="logo">
-        <span class="logo-mini"><b>ZK</b>JZ</span>
-        <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
-    </a>
+<jsp:include page="header.jsp"></jsp:include>
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
-
-                    <%
-                        if (user != null){
-                    %>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <%=
-                            user.getName()
-                            %>
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="User.jsp">个人信息</a></li>
-                            <li><a href="Friends.jsp">好友列表</a></li>
-                            <li><a href="CollectionDirectory.jsp">收藏夹</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li ><a onclick="quit()"> 退出登录</a></li>
-                        </ul>
-                    </li>
-                    <%
-                    }else {
-
-                    %>
-                    <li><a href="Login.jsp">注册</a></li>
-                    <li><a href="SignUp.jsp">登录</a></li>
-                    <%
-                        }
-                    %>
-
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 <div class="container">
     <aside class="main-sidebar">
         <section class="sidebar">
@@ -88,8 +53,14 @@
                 <li class="header"><span class="fa-lg">管理菜单</span></li>
                 <li><a href="../JSP/CollectionDirectory.jsp"><i class="fa fa-link"></i> <span>收藏夹</span></a></li>
                 <li><a href="../JSP/Friends.jsp"><i class="fa fa-link"></i> <span>好友列表</span></a></li>
+                <%
+                    if (user.getPrivilege()){
+                %>
                 <li><a href="../JSP/UserManage.jsp"><i class="fa fa-link"></i> <span>人员管理</span></a></li>
                 <li><a href="../JSP/WorkManage.jsp"><i class="fa fa-link"></i> <span>作品管理</span></a></li>
+                <%
+                    }
+                %>
             </ul>
         </section>
     </aside>
@@ -130,10 +101,10 @@
                     for (User tempUser: users){
                         session.setAttribute("friend",tempUser);
                 %>
-                <form action="requestFriendServlet" method="post" role="form">
+                <form action="/requestFriend" method="post" role="form">
                     <div class="card">
                         <div class="card-view">
-                            <img src="img/1.png" class="img-circle" alt="User Image">
+                            <img src="../img/1.png" class="img-circle" alt="User Image">
                         </div>
                         <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
                         <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static dao.UserDao.update;
 
-@WebServlet(name = "requestFriendServlet")
+@WebServlet("/requestFriend")
 public class requestFriendServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String admit = request.getParameter("power");

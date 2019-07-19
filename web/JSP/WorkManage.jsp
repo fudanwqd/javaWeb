@@ -1,29 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/14
-  Time: 9:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml"
->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 
 
-    <script src="../js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script src="../js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>
-    <script src="../js/bootstrapValidator.min.js" th:src="@{/js/bootstrapValidator.min.js}"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrapValidator.min.js"></script>
 
-    <title>用户管理</title>
+    <title>作品管理</title>
     <style>
         .divBorder{
             border: solid 1px rgba(12,24,255,0.15);
@@ -38,6 +28,8 @@
     </style>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
+
 <div class="container-fluid">
 
     <div class="divBorder">
@@ -59,6 +51,11 @@
                 </tr>
                 </thead>
 
+                <%
+                    String sql = "SELECT ID,NAME,LOCATION,DESCRIPTION FROM ARTWORK";
+//                    List<User> users = getUsers(sql);
+//                    for (User tempUser : users){
+                %>
                 <tbody>
                 <tr>
                     <td>1</td>

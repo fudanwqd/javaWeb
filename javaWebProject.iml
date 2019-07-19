@@ -33,5 +33,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6 (2)" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6 (3)" level="project" />
   </component>
 </module>

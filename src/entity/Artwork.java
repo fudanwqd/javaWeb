@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Date;
+
 public class Artwork {
     private int id;
     private String name;
@@ -10,12 +12,15 @@ public class Artwork {
     private int hot;
     private String time;
     private String videoPath;
+    private Date uploadingTime;
+
+
 
     public Artwork(int id, String name,
                    String type, String description,
                    String imgPath, String location,
                    int hot, String time,
-                   String videoPath) {
+                   String videoPath,Date uploadingTime) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -25,6 +30,7 @@ public class Artwork {
         this.hot = hot;
         this.time = time;
         this.videoPath = videoPath;
+        this.uploadingTime = uploadingTime;
     }
 
     public int getId() {
@@ -83,6 +89,22 @@ public class Artwork {
         this.hot = hot;
     }
 
+    @Override
+    public String toString() {
+        return "Artwork{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", location='" + location + '\'' +
+                ", hot=" + hot +
+                ", time='" + time + '\'' +
+                ", videoPath='" + videoPath + '\'' +
+                ", uploadingTime=" + uploadingTime +
+                '}';
+    }
+
     public String getTime() {
         return time;
     }
@@ -97,5 +119,12 @@ public class Artwork {
 
     public void setVideoPath(String videoPath) {
         this.videoPath = videoPath;
+    }
+    public Date getUploadingTime() {
+        return uploadingTime;
+    }
+
+    public void setUploadingTime(Date uploadingTime) {
+        this.uploadingTime = uploadingTime;
     }
 }

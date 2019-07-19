@@ -1,4 +1,6 @@
-<%--
+<%@ page import="entity.User" %>
+<%@ page import="static dao.UserDao.getUsers" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Water
   Date: 2019/7/14
@@ -13,9 +15,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/bootstrapValidator.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/AdminLTE.css">
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/bootstrapValidator.min.js"></script>
+    <script src="../js/adminlte.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-table-treegrid.js"></script>
+    <script src="../js/jquery.treegrid.min.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
 
     <title>用户管理</title>
     <style>
@@ -32,6 +45,52 @@
     </style>
 </head>
 <body>
+
+<header class="main-header">
+    <a href="Home.jsp" class="logo">
+        <span class="logo-mini"><b>ZK</b>JZ</span>
+        <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
+    </a>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" id="mytab">
+                    <li><a href="Home.jsp">首页</a></li>
+                    <li><a href="Search.jsp">搜索</a></li>
+
+                    <%
+                        User user = (User) session.getAttribute("user");
+                        if (user != null){
+                    %>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <%=
+                            user.getName()
+                            %>
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="User.jsp">个人信息</a></li>
+                            <li><a href="Friends.jsp">好友列表</a></li>
+                            <li><a href="CollectionDirectory.jsp">收藏夹</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li ><a onclick="quit()"> 退出登录</a></li>
+                        </ul>
+                    </li>
+                    <%
+                    }else {
+                    %>
+                    <li><a href="Login.jsp">注册</a></li>
+                    <li><a href="SignUp.jsp">登录</a></li>
+                    <%
+                        }
+                    %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 <div class="container-fluid">
     <div class="divBorder">
         <div class="form-inline">
@@ -45,20 +104,31 @@
                 <thead>
                 <tr class="info">
                     <th>用户ID</th>
-                    <th>用户身份</th>
                     <th>用户名</th>
+                    <th>用户身份</th>
                     <th>邮箱</th>
                     <th>最近登录</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
-                    <td>1</td>
-                    <td>用户</td>
-                    <td>张三</td>
-                    <td>zhangsan@126.com</td>
-                    <td>2018-01-01 13:00</td>
+                <%
+                    String sql = "SELECT ID,NAME,NAME,PASSWORD,EMAIL,RECENTSIGNUP FROM USERS";
+                    List<User> users = getUsers(sql);
+                    for (User tempUser : users){
+                %>
+                <tr>
+                    <td><%=tempUser.getUserID()%></td>
+                    <td><%=tempUser.getName()%></td>
+                    <td><%
+                        if (tempUser.getPrivilege())
+                            out.write("管理员");
+                        else
+                            out.write("普通用户");
+                    %></td>
+
+                    <td><%=tempUser.getEmail()%></td>
+                    <td><%=tempUser.getRecentSignUp()%></td>
                     <td>
                         <a href="#" class="btn left20" role="button">
                         <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修改用户身份</a>
@@ -66,6 +136,9 @@
                             <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
                     </td>
                 </tr>
+                <%
+                    }
+                %>
                 </tbody>
             </table>
         </div>

@@ -1,4 +1,5 @@
 package dao;
+import entity.Artwork;
 import entity.User;
 import org.junit.Test;
 
@@ -32,29 +33,7 @@ public class UserDao {
 
     @Test
     public void testSe(){
-        String sql = "SELECT * FROM USERS WHERE NAME ='Admin'";
 
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = getConnection();
-            preparedStatement = connection.prepareStatement(sql);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
-                User user = getUser(sql);
-                if (user == null){
-                    System.out.println("?????");
-                }
-                System.out.println(user.toString());
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll(connection,preparedStatement,resultSet);
-        }
     }
 
 

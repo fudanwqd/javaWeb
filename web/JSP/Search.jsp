@@ -1,4 +1,5 @@
-<%--
+<%@ page import="entity.Artwork" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -9,8 +10,8 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <meta charset="utf-8">
 <link rel="stylesheet" href="../css/style.css">
@@ -49,306 +50,97 @@
 
 </style>
 <body>
-<header class="main-header">
-    <a href="#" class="logo">
-        <span class="logo-mini"><b>ZK</b>JZ</span>
-        <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
-    </a>
+<jsp:include page="header.jsp"></jsp:include>
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">用户<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">个人信息</a></li>
-                            <li><a href="#">好友列表</a></li>
-                            <li><a href="#">收藏夹</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">退出登录</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="input-group">
-                <input type="text" class="form-control" onkeydown="onKeyDown(event)"/>
-                <span class="input-group-addon"><i class="glyphicon glyphicon-search" onclick="doSearch()"></i></span>
+                <input type="text" class="form-control" name="search" onkeydown="onKeyDown(event,search.value)"/>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"
+                                                   onclick="doSearch(search.value)"></i></span>
             </div>
         </div>
     </div>
     <section>
         <h2>搜索结果：</h2>
-        <div id="selection">
-            <!--排序方式:-->
-            <!--<input type="radio"name="selection"value="价格">价格-->
-            <!--<input type="radio"name="selection"value="热度">热度-->
-            <!--<input type="radio"name="selection"value="标题">标题-->
-        </div>
-        <table>
-            <tr>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2"><img class="showPicture" src="../img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
-                        </tr>
-                        <tr>
-                            <td>朝代：</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                        </tr>
-                        <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
-                        </tr>
-                        <tr>
-                            <td>朝代：</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                        </tr>
-                        <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
-                        </tr>
-                        <tr>
-                            <td>朝代：</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                        </tr>
-                        <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
-                        </tr>
-                    </table>
-                </td>
 
-            </tr>
+
+        <%
+            List<Artwork> limitsearches = null;
+            if (request.getAttribute("searches") != null) {
+                limitsearches = (List<Artwork>) request.getAttribute("limitsearches");
+            }
+            if (limitsearches != null) {
+        %>
+        <table>
+
+                <%
+               for(int i=0;i<3;i++){
+                   %>
             <tr>
+                    <%
+                       for(int j=0;j<3;j++){
+                           %>
                 <td>
                     <table class="frame">
                         <tr>
-                            <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
+                            <td rowspan="2"><img class="showPicture" src=<%=limitsearches.get(i*3+j).getImgPath()%>>
+                            </td>
+                            <td><%=limitsearches.get(i * 3 + j).getName()%>
+                            </td>
                         </tr>
                         <tr>
-                            <td>朝代：</td>
+                            <td>朝代：<%=limitsearches.get(i * 3 + j).getTime()%>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
+                            <td colspan="2"><%=limitsearches.get(i * 3 + j).getDescription()%>
+                            </td>
                         </tr>
                         <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
+                            <td>
+                                <button type="button"><a href="ExhibitionDetails.jsp?id=<%=limitsearches.get(i * 3 + j).getId()%>">详情</a></button>
+                            </td>
+                            <td>
+                                <button type="button"><a href="#">收藏</a></button>
+                            </td>
                         </tr>
                     </table>
-                </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
-                        </tr>
-                        <tr>
-                            <td>朝代：</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                        </tr>
-                        <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
-                        </tr>
-                    </table>
-                </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                            <td>古父己卣</td>
-                        </tr>
-                        <tr>
-                            <td>朝代：</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                        </tr>
-                        <tr>
-                            <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                            <td><button type="button"><a href="#">收藏</a></button></td>
-                        </tr>
-                    </table>
-                </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>  <td>
-                <table class="frame">
-                    <tr>
-                        <td rowspan="2"><img class="showPicture" src="img/金石/古父己卣.jpg"> </td>
-                        <td>古父己卣</td>
-                    </tr>
-                    <tr>
-                        <td>朝代：</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                            此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button"><a href="ExhibitionDetails.jsp">详情</a></button></td>
-                        <td><button type="button"><a href="#">收藏</a></button></td>
-                    </tr>
-                </table>
-            </td>
-            </tr>
-        </table>
-        <div class="row text-center">
-            <ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
-        </div>
+                </td>
+                    <%
+                            }
+                           }
+ }
+                           %>
+
+                <div class="row text-center">
+                    <ul class="pagination">
+                        <li><a href="/SearchServlet?page=${requestScope.prev}">&laquo;</a></li>
+                        <%
+                            int Allpage = (int)request.getAttribute("last");
+                            for(int i=0;i<Allpage;i++){
+                        %>
+                        <li><a href="/SearchServlet?page=<%=i%>"><%=i%></a></li>
+                        <%
+                            }
+                        %>
+                        <li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>
+                    </ul>
+                </div>
 
     </section>
     <script type="text/javascript">
-        function onKeyDown(event){
+        function onKeyDown(event, Searchvalue) {
             var e = event || window.event || arguments.callee.caller.arguments[0];
-            if(e && e.keyCode==13){ // enter 键
-                doSearch();
+            if (e && e.keyCode == 13) { // enter 键
+                doSearch(Searchvalue);
             }
 
         }
-        function doSearch() {
+
+        function doSearch(searchValue) {
+            window.location.href = "/SearchServlet?search=" + searchValue;
             alert("搜索！")
         }
 

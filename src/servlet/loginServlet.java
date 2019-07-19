@@ -13,7 +13,7 @@ import java.io.IOException;
 import static dao.UserDao.*;
 
 
-@WebServlet(name = "loginServlet")
+@WebServlet("/login")
 public class loginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("userName");
