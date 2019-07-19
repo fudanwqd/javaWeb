@@ -279,7 +279,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="378" />
     <option name="y" value="17" />
     <option name="width" value="1445" />
@@ -539,7 +539,7 @@
       <workItem from="1563439736258" duration="6046000" />
       <workItem from="1563449093080" duration="9316000" />
       <workItem from="1563513581541" duration="2130000" />
-      <workItem from="1563517561851" duration="3678000" />
+      <workItem from="1563517561851" duration="4273000" />
     </task>
     <task id="LOCAL-00001" summary="update project">
       <created>1563347219216</created>
@@ -566,10 +566,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90411000" />
+    <option name="totallyTimeSpent" value="91006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="303" y="14" width="1156" height="842" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49704143" visible="true" weight="0.25227687" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
