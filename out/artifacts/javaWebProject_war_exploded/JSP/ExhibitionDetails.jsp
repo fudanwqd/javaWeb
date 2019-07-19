@@ -1,4 +1,4 @@
-<%--
+<%@ page import="entity.Artwork" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -68,20 +68,22 @@
         </div>
     </nav>
 </header>
-<%
-    int id  = (int)request.getAttribute("id");
 
-%>
 <div class="container">
-    <h2>古父己卣</h2>
-    <p>朝代：</p>
+    <%
+    Artwork artwork =null;
+    artwork = (Artwork)request.getAttribute("artwork");
+    if(artwork!=null){
+%>
+
+    <h2><%=artwork.getName()%></h2>
+    <p>朝代：<%=artwork.getTime()%></p>
     <div class="col-lg-4">
-        <img src="../img/金石/古父己卣.jpg" height="400" width="300">
+        <img src=<%=artwork.getImgPath()%>  height="400" width="300">
     </div>
     <div class="col-lg-4">
         <div class="row">
-            <p>藏品介绍：西周 ，古父己卣此卣卣体作直筒形，有盖和提梁，形式与一般卣作椭圆形体的完全不同，在商代还找不到确切的祖型。
-                此器颈部及圈足各饰分体夔纹，盖面及腹部是浮雕的大牛头，牛角翘起突出器表，巨晴凝视，有神秘感。</p>
+            <p><%=artwork.getDescription()%></p>
         </div>
         <div class="row">
             <table class="intro">
@@ -91,15 +93,15 @@
                     </td>
 
                     <td>
-                        西周 早期
+                        <%=artwork.getTime()%>
                     </td>
                 </tr>
                 <tr class="line">
                     <td>
-                        尺寸
+                        馆藏
                     </td>
                     <td>
-                        高33.2厘米，口径15.7厘米
+                        <%=artwork.getLocation()%>
                     </td>
                 </tr>
             </table>
@@ -107,7 +109,14 @@
         <div class="row">
 
             <button type="button"><a href="#">收藏</a></button>
+            <%
+             session.getAttribute("user");
+                %>
+
             <button type="button"><a href="CollectionDirectory.jsp">查看收藏夹</a></button>
+            <%
+            }
+        %>
         </div>
     </div>
 </div>

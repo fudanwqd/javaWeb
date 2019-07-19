@@ -109,6 +109,10 @@
         <div class="row">
 
             <button type="button"><a href="#">收藏</a></button>
+            <%
+             session.getAttribute("user");
+                %>
+
             <button type="button"><a href="CollectionDirectory.jsp">查看收藏夹</a></button>
             <%
             }

@@ -7,30 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68e09f37-e07d-4c90-80f8-24a0e929c231" name="Default Changelist" comment="update project">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ffd2239d-61e9-4858-b5dd-f33e5466977e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ffd2239d-61e9-4858-b5dd-f33e5466977e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/CollectionDirectory.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/CollectionDirectory.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/ExhibitionDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/ExhibitionDetails.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/Home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/Search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/JSP/Search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/BaseDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/entity/Artwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/entity/Artwork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/newjdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/newjdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/META-INF/javaWebProject.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/dao/ArtworkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/dao/ArtworkDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/servlet/ExhibitionDetailsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/servlet/ExhibitionDetailsServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/util/DBconnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/javaWebProject_war_exploded/WEB-INF/classes/util/DBconnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/BaseDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/entity/Artwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/entity/Artwork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/newjdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/newjdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/META-INF/javaWebProject.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/dao/ArtworkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/dao/ArtworkDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/servlet/ExhibitionDetailsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/servlet/ExhibitionDetailsServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/javaWebProject/util/DBconnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/javaWebProject/util/DBconnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/artwork.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/artwork.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/users.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BaseDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Artwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Artwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newjdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newjdbc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DBconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DBconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/JSP/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/JSP/Home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/JSP/Search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/JSP/Search.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -91,20 +82,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/JSP/Home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2483">
-              <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/servlet/loginServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+            <state relative-caret-position="170">
+              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -122,13 +104,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servlet/HomeServlet.java">
+        <entry file="file://$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1904">
+              <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -136,44 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/servlet/SearchServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="15" column="120" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="120" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="111" column="66" selection-start-line="111" selection-start-column="66" selection-end-line="111" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servlet/CollectionDirectoryServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -181,11 +124,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/ArtworkDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+            <state relative-caret-position="493">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entity/Artwork.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="566">
+              <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/JSP/Search.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1734">
+              <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="81" column="15" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -244,7 +214,6 @@
         <option value="$PROJECT_DIR$/web/ExhibitionDetails.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/Home.jsp" />
-        <option value="$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp" />
         <option value="$PROJECT_DIR$/src/servlet/SearchServlet.java" />
         <option value="$PROJECT_DIR$/src/entity/Artwork.java" />
         <option value="$PROJECT_DIR$/src/servlet/HomeServlet.java" />
@@ -253,12 +222,13 @@
         <option value="$PROJECT_DIR$/src/entity/User.java" />
         <option value="$PROJECT_DIR$/sql/users.sql" />
         <option value="$PROJECT_DIR$/src/newjdbc.java" />
-        <option value="$PROJECT_DIR$/web/JSP/Search.jsp" />
         <option value="$PROJECT_DIR$/src/dao/ArtworkDao.java" />
         <option value="$PROJECT_DIR$/src/util/DBconnect.java" />
         <option value="$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java" />
-        <option value="$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp" />
+        <option value="$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp" />
         <option value="$PROJECT_DIR$/src/servlet/CollectionDirectoryServlet.java" />
+        <option value="$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp" />
+        <option value="$PROJECT_DIR$/web/JSP/Search.jsp" />
       </list>
     </option>
   </component>
@@ -269,10 +239,10 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="61" />
+    <option name="y" value="26" />
+    <option name="width" value="1863" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -283,13 +253,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="javaWebProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="javaWebProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWebProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaWebProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWebProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaWebProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaWebProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaWebProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="javaWebProject" type="b2602c69:ProjectViewProjectNode" />
@@ -306,7 +293,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,7 +305,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563443564180" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563515230851" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.16.jar!/" />
@@ -454,7 +441,8 @@
       <workItem from="1563350617055" duration="5000" />
       <workItem from="1563359213268" duration="12341000" />
       <workItem from="1563414895377" duration="25368000" />
-      <workItem from="1563504871807" duration="969000" />
+      <workItem from="1563504871807" duration="6112000" />
+      <workItem from="1563515296980" duration="2801000" />
     </task>
     <task id="LOCAL-00001" summary="update project">
       <created>1563347219216</created>
@@ -463,17 +451,33 @@
       <option name="project" value="LOCAL" />
       <updated>1563347219216</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update project">
+      <created>1563506167665</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563506167666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102436000" />
+    <option name="totallyTimeSpent" value="110380000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1689008" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17158177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -483,19 +487,19 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8552279" weight="0.28895184" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8552279" visible="true" weight="0.28895184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5429769" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.14477211" side_tool="true" weight="0.91501415" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.45702305" side_tool="true" weight="0.33142856" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32719547" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32577905" />
       <window_info anchor="bottom" id="Database Console" order="15" sideWeight="0.49932975" weight="0.3286119" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -531,7 +535,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ffd2239d-61e9-4858-b5dd-f33e5466977e/console.sql" />
     <entry file="das://ffd2239d-61e9-4858-b5dd-f33e5466977e/schema/javaweb/table/artworks" />
     <entry file="file://$PROJECT_DIR$/src/User.java" />
     <entry file="file://$PROJECT_DIR$/src/filter/EncodingFilter.java">
@@ -583,13 +586,6 @@
     <entry file="file://$PROJECT_DIR$/web/JSP/addUser.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/JSP/UserManage.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -621,19 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entity/Artwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding>
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2154#2155#0" expanded="true" />
-            <element signature="e#2210#2211#0" expanded="true" />
-            <element signature="e#2260#2261#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql/artwork.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -653,20 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2134#2135#0" expanded="true" />
-            <element signature="e#2166#2167#0" expanded="true" />
-            <element signature="e#2216#2217#0" expanded="true" />
-            <element signature="e#2258#2259#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,10 +670,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/JSP/Search.jsp">
+    <entry file="file://$PROJECT_DIR$/src/servlet/HomeServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="132" column="76" selection-start-line="132" selection-start-column="76" selection-end-line="132" selection-end-column="76" />
+        <state relative-caret-position="218">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/CollectionDirectoryServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="19" column="98" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
         </state>
       </provider>
     </entry>
@@ -718,23 +711,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/ExhibitionDetailsServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="15" column="120" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="120" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1904">
+          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/ArtworkDao.java">
+    <entry file="file://$PROJECT_DIR$/web/JSP/CollectionDirectory.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1377">
+          <caret line="81" column="15" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -748,54 +735,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/CollectionDirectoryServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/HomeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/servlet/SearchServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="51">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/ArtworkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/JSP/ExhibitionDetails.jsp">
+    <entry file="file://$PROJECT_DIR$/src/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="111" column="66" selection-start-line="111" selection-start-column="66" selection-end-line="111" selection-end-column="66" />
+        <state relative-caret-position="413">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/JSP/Home.jsp">
+    <entry file="file://$PROJECT_DIR$/src/entity/Artwork.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2483">
-          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+        <state relative-caret-position="566">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/JSP/Search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/servlet/loginServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/JSP/Home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
         </state>
       </provider>
     </entry>

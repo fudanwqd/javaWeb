@@ -148,11 +148,13 @@
                     <ul class="pagination">
                         <li><a href="/SearchServlet?page=${requestScope.prev}">&laquo;</a></li>
                         <%
+                            if(request.getAttribute("last")!=null){
                             int Allpage = (int)request.getAttribute("last");
                             for(int i=0;i<Allpage;i++){
                                 %>
                         <li><a href="/SearchServlet?page=<%=i%>"><%=i%></a></li>
                         <%
+                                }
                             }
                         %>
                         <li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>

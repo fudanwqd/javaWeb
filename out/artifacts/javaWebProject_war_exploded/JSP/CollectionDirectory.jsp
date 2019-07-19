@@ -78,7 +78,9 @@
 </header>
 
 <section>
-
+    <%
+        request
+    %>
     <h2 class="text-center">收藏夹</h2>
     <table>
         <tr>
