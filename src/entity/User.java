@@ -12,8 +12,11 @@ public class User {
     private ArrayList<String> collections;
     private ArrayList<String> friends;
     private Date recentSignUp;
+    private String signature;
 
-    public User(int id, String name, String password, boolean privilege, String email, ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp) {
+
+
+    public User(int id, String name, String password, boolean privilege, String email, ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp, String signature) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -22,6 +25,7 @@ public class User {
         this.collections = collections;
         this.friends = friends;
         this.recentSignUp = recentSignUp;
+        this.signature=signature;
     }
 
     public String getEmail() {
@@ -31,11 +35,11 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public int getUserID() {
+    public int getId() {
         return id;
     }
 
-    public void setUserID(int userID) {
+    public void setId(int userID) {
         this.id = userID;
     }
 
@@ -86,7 +90,13 @@ public class User {
     public void setRecentSignUp(Date recentSignUp) {
         this.recentSignUp = recentSignUp;
     }
+    public String getSignature() {
+        return signature;
+    }
 
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
 
 
 }

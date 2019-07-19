@@ -68,6 +68,10 @@
         </div>
     </nav>
 </header>
+<%
+    int id  = (int)request.getAttribute("id");
+
+%>
 <div class="container">
     <h2>古父己卣</h2>
     <p>朝代：</p>

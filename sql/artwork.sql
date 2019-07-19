@@ -10,7 +10,8 @@ CREATE TABLE `artwork`(
   `location` varchar(255) NOT NULL,
   `hot` int(11) NOT NULL DEFAULT '0',
   `time` VARCHAR(255) NOT NULL,
-   `videoPath`  VARCHAR(255) NOT NULL
+   `videoPath`  VARCHAR(255) NOT NULL,
+    `uploadingTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `artwork`
