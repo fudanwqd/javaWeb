@@ -27,10 +27,10 @@ public class ArtworkDao {
          artworks = selectArtworks("select * from artwork order by ? desc limit 0 , ?",type,limit);
         return artworks;
     }
-    public static List<Artwork> SearchById(int id){
+    public static Artwork SearchById(int id){
         List<Artwork> artworks = new LinkedList<>();
        artworks = selectArtworks("select * from artwork where id = ?",id);
-        return artworks;
+        return artworks.get(0);
     }
     private static List<Artwork> selectArtworks(String sql, Object...args){
         List<Artwork> artworks = new LinkedList<>();

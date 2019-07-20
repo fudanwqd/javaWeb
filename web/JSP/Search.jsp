@@ -100,7 +100,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <button type="button"><a href="ExhibitionDetails.jsp?id=<%=limitsearches.get(i * 3 + j).getId()%>">详情</a></button>
+                                <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=limitsearches.get(i * 3 + j).getId()%>">详情</a></button>
                             </td>
                             <td>
                                 <button type="button"><a href="#">收藏</a></button>
@@ -111,7 +111,7 @@
                     <%
                             }
                            }
- }
+
                            %>
 
                 <div class="row text-center">
@@ -128,6 +128,14 @@
                         <li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>
                     </ul>
                 </div>
+            <%
+                            }
+            else{
+                %>
+                        <div class="row text-center">无搜索结果！</div>
+                        <%
+            }
+            %>
 
     </section>
     <script type="text/javascript">
@@ -140,8 +148,8 @@
         }
 
         function doSearch(searchValue) {
-            window.location.href = "/SearchServlet?search=" + searchValue;
-            alert("搜索！")
+            // window.location.href = "/SearchServlet?search=" + searchValue;
+     alert(1);
         }
 
 

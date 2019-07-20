@@ -63,7 +63,7 @@
                     for (User tempUser: users){
                         session.setAttribute("friend",tempUser);
                 %>
-                <form action="requestFriendServlet" method="post" role="form">
+                <form action="/requestFriend" method="post" role="form">
                     <div class="card">
                         <div class="card-view">
                             <img src="../img/1.png" class="img-circle" alt="User Image">

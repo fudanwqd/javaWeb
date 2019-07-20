@@ -1,11 +1,7 @@
-<%@ page import="entity.User" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/19
-  Time: 15:10
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 
 <header class="main-header">
     <a href="Home.jsp" class="logo">
@@ -17,8 +13,8 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
+                    <li><a href="/HomeServlet">首页</a></li>
+                    <li><a href="../JSP/Search.jsp">搜索</a></li>
 
                     <%
                         User user = (User) session.getAttribute("user");

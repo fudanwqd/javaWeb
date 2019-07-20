@@ -39,11 +39,13 @@
 </head>
 
 <body>
+<%--<jsp:include page="header.jsp"></jsp:include>--%>
+
 <div class="container">
     <div class="row row-centered">
         <div class="col-md-6 col-centered">
             <h2 style="text-align: center">用户注册</h2>
-            <form action="\loginServlet" method="post" role="form" name="login">
+            <form action="/login" method="post" role="form" name="login">
                 <div class="input-group input-group-md">
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名"/>

@@ -1,17 +1,6 @@
-<%@ page import="entity.User" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/14
-  Time: 9:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml"
->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -39,51 +28,7 @@
     </style>
 </head>
 <body>
-<header class="main-header">
-    <a href="Home.jsp" class="logo">
-        <span class="logo-mini"><b>ZK</b>JZ</span>
-        <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
-    </a>
-
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
-
-                    <%
-                        User user = (User) session.getAttribute("user");
-                        if (user != null){
-                    %>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <%=
-                            user.getName()
-                            %>
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="User.jsp">个人信息</a></li>
-                            <li><a href="Friends.jsp">好友列表</a></li>
-                            <li><a href="CollectionDirectory.jsp">收藏夹</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li ><a onclick="quit()"> 退出登录</a></li>
-                        </ul>
-                    </li>
-                    <%
-                    }else {
-                    %>
-                    <li><a href="Login.jsp">注册</a></li>
-                    <li><a href="SignUp.jsp">登录</a></li>
-                    <%
-                        }
-                    %>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="container-fluid">
 

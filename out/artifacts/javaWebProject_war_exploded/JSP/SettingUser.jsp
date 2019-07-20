@@ -14,9 +14,10 @@
     <title>修改信息</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="container-fluid panel-body" style="padding-bottom:0px">
-    <form class="form-horizontal" id="formAdd" action="setUserServlet" method="post">
+    <form class="form-horizontal" id="formAdd" action="/setUser" method="post">
         <div class="panel panel-default" style="margin-bottom: 0px">
             <h4 class="panel panel-heading h4font">
                 修改个人信息

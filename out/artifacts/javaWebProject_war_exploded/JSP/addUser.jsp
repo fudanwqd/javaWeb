@@ -37,7 +37,7 @@
             </h4>
 
             <div class="panel-body">
-                <form method="POST" action="loginServlet">
+                <form method="POST" action="/login">
                 <div class="form-group">
                     <label class="col-sm-1 control-label"><span style="color: red;font-weight: bold">＊</span>用户名:</label>
                     <div class="col-sm-4">

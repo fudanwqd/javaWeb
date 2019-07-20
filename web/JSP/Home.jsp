@@ -39,7 +39,7 @@
                 if(hotArtworks!=null){
             %>
             <div class="swiper-slide swiper-slide-center none-effect">
-                <a href="ExhibitionDetails.jsp?id=<%=hotArtworks.get(0).getId()%>">
+                <a href="/ExhibitionDetails.jsp?id=<%=hotArtworks.get(0).getId()%>">
                     <img  class="rounded-circle" src=<%=hotArtworks.get(0).getImgPath()%>>
                 </a>
                 <div class="layer-mask"></div>

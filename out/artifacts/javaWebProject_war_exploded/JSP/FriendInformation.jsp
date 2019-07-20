@@ -75,10 +75,10 @@
 //            Artwork artwork = new Artwork();
 
     %>
-    <form action="requestFriendServlet" method="post" role="form">
+    <form action="/requestFriend" method="post" role="form">
         <div class="card">
             <div class="card-view">
-                <img src="img/1.png" class="img-circle" alt="User Image">
+                <img src="../img/1.png" class="img-circle" alt="User Image">
             </div>
             <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
             <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>

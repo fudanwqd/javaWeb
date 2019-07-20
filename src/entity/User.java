@@ -9,8 +9,6 @@ public class User {
     private String password;
     private boolean privilege;
     private String email;
-    private ArrayList<String> collections;
-    private ArrayList<String> friends;
     private Date recentSignUp;
     private String signature;
 
@@ -27,24 +25,20 @@ public class User {
     }
 
     public User(int id , String name, String password, boolean privilege, String email,
-                ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp,String signature) {
+                  Date recentSignUp,String signature) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.privilege = privilege;
         this.email = email;
-        this.collections = collections;
-        this.friends = friends;
         this.recentSignUp = recentSignUp;
         this.signature = signature;
     }
-    public User(String name, String password, boolean privilege, String email, ArrayList<String> collections, ArrayList<String> friends, Date recentSignUp) {
+    public User(String name, String password, boolean privilege, String email, Date recentSignUp) {
         this.name = name;
         this.password = password;
         this.privilege = privilege;
         this.email = email;
-        this.collections = collections;
-        this.friends = friends;
         this.recentSignUp = recentSignUp;
     }
     public User(){
@@ -59,8 +53,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", privilege=" + privilege +
                 ", email='" + email + '\'' +
-                ", collections=" + collections +
-                ", friends=" + friends +
                 ", recentSignUp=" + recentSignUp +
                 '}';
     }
@@ -102,22 +94,6 @@ public class User {
 
     public void setPrivilege(boolean privilege) {
         this.privilege = privilege;
-    }
-
-    public ArrayList<String> getCollections() {
-        return collections;
-    }
-
-    public void setCollections(ArrayList<String> collections) {
-        this.collections = collections;
-    }
-
-    public ArrayList<String> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(ArrayList<String> friends) {
-        this.friends = friends;
     }
 
     public Date getRecentSignUp() {
