@@ -67,13 +67,14 @@
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="input-group">
-                <input type="text" class="form-control" id="search">
+                <input type="text" class="form-control" id="search" onkeydown="onKeyDown(event)">
                 <span class="input-group-addon"><a onclick="doSearch()"><i class="glyphicon glyphicon-search"></i></a></span>
             </div>
             <div>
                 排序方式：
-                <input type="radio" name="selection" value=“normal” onclick="changeType()" checked>默认
-                <input type="radio" name="selection" value="hot" onclick="changeType()">热度
+                <input type="radio" name="selection" value=“normal” checked="checked">默认
+                <input type="radio" name="selection" value="hot" >热度
+
             </div>
         </div>
     </div>
@@ -84,28 +85,33 @@
     </section>
     <script type="text/javascript">
         $(document).ready(function() {
-            paging(1,"");
+           doSearch();
         });
-          function changeType(){
-              var type =  document.getElementsByName("selection");
-              if(type==="normal"){
-                  
-              }
-          }
-        // function onKeyDown(event, Searchvalue) {
-        //     var e = event || window.event || arguments.callee.caller.arguments[0];
-        //     if (e && e.keyCode == 13) { // enter 键
-        //         doSearch(Searchvalue);
-        //     }
-        //
-        // }
+        function onKeyDown(event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 13) { // enter 键
+                doSearch();
+            }
 
+        }
+        $(document).ready(function() {
+            $('input[type=radio][name=selection]').change(function () {
+                doSearch();
+            });
+        });
         function doSearch() {
            var searchValue = document.getElementById("search").value;
-            paging(1,searchValue);
+            var types =  document.getElementsByName("selection");
+            var type = null;
+            for(var i=0;i<types.length;i++){
+                if(types[i].checked){
+                  type = types[i].value;
+                }
+            }
+            paging(1,searchValue,type);
         }
 
-        function paging(page,search="") {
+        function paging(page,search="",type) {
             var xmlhttp;
             if (window.XMLHttpRequest)
             {
@@ -125,7 +131,7 @@
                     document.getElementById("searchdiv").innerHTML=xmlhttp.responseText;
                 }
             };
-            xmlhttp.open("GET","/SearchServlet?page="+page+"&search="+search,true);
+            xmlhttp.open("GET","/SearchServlet?page="+page+"&search="+search+"&type="+type,true);
             xmlhttp.send();
         }
     </script>

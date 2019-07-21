@@ -16,6 +16,15 @@ public class ArtworkDao {
         List<Artwork> artworks = selectArtworks("select * from artwork order by hot desc");
         return artworks;
     }
+    public static  List<Artwork> SearchAll(){
+        List<Artwork> artworks = selectArtworks("select * from artwork");
+        return artworks;
+    }
+    public static List<Artwork> SearchLimit(int i, int num){
+        List<Artwork> artworks = new LinkedList<>();
+        artworks=selectArtworks("select * from artwork limit ? , ?",i,num);
+        return artworks;
+    }
     public static List<Artwork> SearchLimitOrderByHotdesc(int i,int num){
         List<Artwork> artworks = selectArtworks("select * from artwork order by hot desc limit ?,?",i,num);
         return artworks;
@@ -25,11 +34,23 @@ public class ArtworkDao {
        artworks =selectArtworks("select * from artwork where name like ? or description like ? or location like ?  order by hot desc","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%");
         return artworks;
 }
+    public static List<Artwork> SearchAllLikeName(String prefix){
+        List<Artwork> artworks = new LinkedList<>();
+        artworks =selectArtworks("select * from artwork where name like ? or description like ? or location like ? ","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%");
+        return artworks;
+    }
+    public static List<Artwork> SearchLimitLikeName(String prefix, int i, int num){
+        List<Artwork> artworks = new LinkedList<>();
+        artworks=selectArtworks("select * from artwork where name like ? or description like ? or location like ? limit ? , ?","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%",i,num);
+        return artworks;
+    }
     public static List<Artwork> SearchLimitLikeNameOrderByHotdesc(String prefix, int i, int num){
         List<Artwork> artworks = new LinkedList<>();
         artworks=selectArtworks("select * from artwork where name like ? or description like ? or location like ? order by hot desc limit ? , ?","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%",i,num);
         return artworks;
     }
+
+
     public static List<Artwork> SearchLimitByOrder(String type, int limit){
         List<Artwork> artworks = new LinkedList<>();
          artworks = selectArtworks("select * from artwork order by ? desc limit 0 , ?",type,limit);

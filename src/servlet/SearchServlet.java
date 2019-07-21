@@ -21,13 +21,22 @@ public class SearchServlet extends HttpServlet {
         request.setCharacterEncoding("gb2312");
         String search =request.getParameter("search");
         int page = Integer.parseInt(request.getParameter("page"));
+        String type = request.getParameter("type");
         PrintWriter out  = response.getWriter();
         StringBuilder content = new StringBuilder();
         List<Artwork> Allsearches ;
         if(search.equals("")||search==null){
-            Allsearches = ArtworkDao.SearchAllOrderByHotdesc();
+            if(type.equals("“normal”")){
+                Allsearches = ArtworkDao.SearchAll();
+            }else{
+                Allsearches = ArtworkDao.SearchAllOrderByHotdesc();
+            }
         }else{
-            Allsearches = ArtworkDao.SearchAllLikeNameOrderByHotdesc(search);
+            if(type.equals("“normal”")){
+                Allsearches = ArtworkDao.SearchAllLikeName(search);
+            }else{
+                  Allsearches = ArtworkDao.SearchAllLikeNameOrderByHotdesc(search);
+            }
         }
         if (Allsearches.size()>0) {
             int Allpage;
@@ -46,12 +55,18 @@ public class SearchServlet extends HttpServlet {
             int nextPage = page+1;
         List<Artwork> searches;
         if(search.equals("")){
-            searches = ArtworkDao.SearchLimitOrderByHotdesc((page-1)*9,9);
+            if(type.equals("“normal”")){
+            searches = ArtworkDao.SearchLimit((page-1)*9,9);
+            }else{
+                searches = ArtworkDao.SearchLimitOrderByHotdesc((page-1)*9,9);
+            }
         }else{
-            searches = ArtworkDao.SearchLimitLikeNameOrderByHotdesc(search,(page-1)*9,9);
+            if(type.equals("“normal”")) {
+                searches = ArtworkDao.SearchLimitLikeName(search,(page-1)*9,9);
+            }else{
+                searches = ArtworkDao.SearchLimitLikeNameOrderByHotdesc(search, (page - 1) * 9, 9);
+            }
         }
-
-
             int row;
             if (searches.size() % 3 == 0) {
                 row = searches.size() / 3;

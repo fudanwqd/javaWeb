@@ -38,22 +38,26 @@
                 hotArtworks= (List<Artwork>) request.getAttribute("hotArtworks");
                 if(hotArtworks!=null){
             %>
-            <div class="swiper-slide swiper-slide-center none-effect">
+            <div class="swiper-slide swiper-slide-center ">
+
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(0).getId()%>">
                     <img  class="rounded-circle" src=<%=hotArtworks.get(0).getImgPath()%>>
                 </a>
+                <p class="text-center"><%=hotArtworks.get(0).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <div class="swiper-slide ">
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(1).getId()%>">
                     <img  class="rounded-circle" src=<%=hotArtworks.get(1).getImgPath()%>>
                 </a>
+                <p class="text-center"><%=hotArtworks.get(1).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <div class="swiper-slide ">
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(2).getId()%>">
                     <img  class="rounded-circle" src=<%=hotArtworks.get(2).getImgPath()%>>
                 </a>
+                <p class="text-center"><%=hotArtworks.get(2).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <%
@@ -78,11 +82,10 @@
                 for(int i=0;i<freshArtworks.size();i++){
         %>
         <div class="col-lg-4">
-            <%--<%="<a href='/ExhibitionDetailsServlet?id="+freshArtworks.get(i).getId()+"'>"%>--%>
             <a href="/ExhibitionDetailsServlet?id=<%=freshArtworks.get(i).getId()%>">
                 <img src="<%=freshArtworks.get(i).getImgPath()%>" class="img-rounded"  height="300" width="300" >
             </a>
-            <p><%=freshArtworks.get(i).getName()%></p>
+            <p class="text-center"><%=freshArtworks.get(i).getName()%></p>
         </div>
         <%
                 }
