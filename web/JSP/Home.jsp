@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/font-awesome.css">
+<%--<link rel="stylesheet" href="../css/font-awesome.css">--%>
 <link rel="stylesheet" href="../css/AdminLTE.css">
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.js"></script>
@@ -17,6 +17,16 @@
 <script src="../js/jquery.treegrid.min.js"></script>
 <script src="../js/bootstrap-tab.js"></script>
 <script type="text/javascript" src="../js/swiper.min.js"></script>
+<style>
+    img{
+        border-radius: 60%;
+        alignment: right;
+    }
+    td{
+        padding: 10px;
+        background-color: #eff7ff ;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
@@ -38,24 +48,24 @@
                 hotArtworks= (List<Artwork>) request.getAttribute("hotArtworks");
                 if(hotArtworks!=null){
             %>
-            <div class="swiper-slide swiper-slide-center ">
+            <div class="swiper-slide swiper-slide-center none-effect">
 
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(0).getId()%>">
-                    <img  class="rounded-circle" src=<%=hotArtworks.get(0).getImgPath()%>>
+                    <img  src=<%=hotArtworks.get(0).getImgPath()%>>
                 </a>
                 <p class="text-center"><%=hotArtworks.get(0).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <div class="swiper-slide ">
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(1).getId()%>">
-                    <img  class="rounded-circle" src=<%=hotArtworks.get(1).getImgPath()%>>
+                    <img src=<%=hotArtworks.get(1).getImgPath()%>>
                 </a>
                 <p class="text-center"><%=hotArtworks.get(1).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <div class="swiper-slide ">
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(2).getId()%>">
-                    <img  class="rounded-circle" src=<%=hotArtworks.get(2).getImgPath()%>>
+                    <img src=<%=hotArtworks.get(2).getImgPath()%>>
                 </a>
                 <p class="text-center"><%=hotArtworks.get(2).getName()%></p>
                 <div class="layer-mask"></div>
@@ -73,26 +83,29 @@
 
 
 <h1 style="font-style: italic" class="text-center">最新展品</h1>
-<div class="container">
-    <div class="row">
+<div>
+    <table>
+        <tr>
         <%
             List<Artwork> freshArtworks = null;
             freshArtworks =  (List<Artwork>) request.getAttribute("freshArtworks");
             if(hotArtworks!=null){
                 for(int i=0;i<freshArtworks.size();i++){
         %>
-        <div class="col-lg-4">
-            <a href="/ExhibitionDetailsServlet?id=<%=freshArtworks.get(i).getId()%>">
-                <img src="<%=freshArtworks.get(i).getImgPath()%>" class="img-rounded"  height="300" width="300" >
+            <td style="text-align: center">
+                    <a href="/ExhibitionDetailsServlet?id=<%=freshArtworks.get(i).getId()%>">
+                <img  style="align-self: auto" src="<%=freshArtworks.get(i).getImgPath()%>"  height="300" width="300" >
             </a>
-            <p class="text-center"><%=freshArtworks.get(i).getName()%></p>
-        </div>
+
+            <h3 class="text-center"><%=freshArtworks.get(i).getName()%></h3>
+            <p><%=freshArtworks.get(i).getDescription().substring(0,60)+"..."%></p>
+            </td>
         <%
                 }
             }
         %>
-
-    </div>
+        </tr>
+    </table>
 </div>
 <script type="text/javascript">
 

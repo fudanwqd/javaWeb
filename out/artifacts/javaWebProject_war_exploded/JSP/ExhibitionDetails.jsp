@@ -84,6 +84,14 @@
                 </tr>
                 <tr class="line">
                     <td>
+                        种类
+                    </td>
+                    <td>
+                        <%=artwork.getType()%>
+                    </td>
+                </tr>
+                <tr class="line">
+                    <td>
                         热度
                     </td>
                     <td>
