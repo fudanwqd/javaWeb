@@ -1,25 +1,27 @@
 <%@ page import="entity.User" %>
 <%@ page import="entity.Artwork" %>
 <%@ page import="java.util.List" %>
+<%@ page import="static dao.UserDao.getUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/font-awesome.css">
-<link rel="stylesheet" href="../css/AdminLTE.css">
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/adminlte.js"></script>
-<script src="../js/bootstrap-table.js"></script>
-<script src="../js/bootstrap-table-zh-CN.js"></script>
-<script src="../js/bootstrap-table-treegrid.js"></script>
-<script src="../js/jquery.treegrid.min.js"></script>
-<script src="../js/bootstrap-tab.js"></script>
-<script type="text/javascript" src="../js/swiper.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/AdminLTE.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/adminlte.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-table-treegrid.js"></script>
+    <script src="../js/jquery.treegrid.min.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../js/swiper.min.js"></script>
 </head>
 <body>
 

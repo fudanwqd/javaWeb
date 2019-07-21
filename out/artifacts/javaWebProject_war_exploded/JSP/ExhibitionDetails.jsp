@@ -9,36 +9,37 @@
 
 <html lang="en">
 
-<meta charset="utf-8">
-<link rel="stylesheet" href="../css/bootstrap.css">
 
-<link rel="stylesheet" href="../css/font-awesome.css">
-
-<link rel="stylesheet" href="../css/AdminLTE.css">
-<script src="../js/jquery-3.3.1.min.js"></script>
-
-<script src="../js/bootstrap.js"></script>
-<script src="../js/adminlte.js"></script>
-<script src="../js/bootstrap-table.js"></script>
-<script src="../js/bootstrap-table-zh-CN.js"></script>
-<script src="../js/bootstrap-table-treegrid.js"></script>
-<script src="../js/jquery.treegrid.min.js"></script>
-<script src="../js/bootstrap-tab.js"></script>
-
-<style>
-    .intro{
-        border-collapse: collapse;
-        width:300px;
-        height:200px;
-    }
-    .line{
-        border:1px solid #CCC;
-    }
-</style>
-<%--<!DOCTYPE html>--%>
 <head>
     <meta charset="UTF-8">
     <title>展品详情</title>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <link rel="stylesheet" href="../css/font-awesome.css">
+
+    <link rel="stylesheet" href="../css/AdminLTE.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/adminlte.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-table-treegrid.js"></script>
+    <script src="../js/jquery.treegrid.min.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+
+    <style>
+        .intro{
+            border-collapse: collapse;
+            width:300px;
+            height:200px;
+        }
+        .line{
+            border:1px solid #CCC;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>

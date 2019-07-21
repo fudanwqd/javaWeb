@@ -4,16 +4,12 @@ let inputName = ["用户名","密码","确认密码","邮箱","验证码"];
 
 //用户名注册判断
 $("#userName").blur(function(){
-
     //清除提示信息
     $($("#nameError")).css("display","none");
-
     //格式判断
     let tip = $($("#rform .tip")[0]);
-
     if(this.value){
         showResult(0, true);
-
         if(this.value.length < 6) {
             check(0,false);
             tip.html("用户名长度不能小于6位数");
@@ -23,7 +19,6 @@ $("#userName").blur(function(){
             tip.html("不能为纯数字或纯字母");
             return;
         }
-
         // let right1 = true;
         //ajax请求
         // $.ajax({

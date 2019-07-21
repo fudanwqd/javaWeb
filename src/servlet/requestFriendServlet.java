@@ -9,34 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import static dao.UserDao.getUser;
 import static dao.UserDao.update;
 
 @WebServlet("/requestFriend")
 public class requestFriendServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String admit = request.getParameter("power");
 
-        User friend = (User) request.getSession().getAttribute("friend");
-        User user = (User) (request.getSession().getAttribute("user"));
-
-        if (admit.equals("同意")){
-            user.getFriends().add(friend.getUserID() + "");
-            StringBuilder str = new StringBuilder();
-            for (String temp : user.getFriends()){
-                str.append(temp);
-                str.append(",");
-            }
-            String sql = "update users set friend = ? where id = ?";
-            update(sql,str.toString(),user.getUserID());
-        }
-
-        String sql1 = "delete from FRIENDSREQUESTS where RECIPIENTID = ?";
-        update(sql1,user.getUserID());
-        response.sendRedirect("/JSP/User.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String value = request.getParameter("value");
+        User user = (User) request.getSession().getAttribute("user");
 
+        if (value.equals("1")){
+            String sql = "INSERT INT FRIENDSRELATION(USERID,FRIENDID) VALUES (?,?)";
+            update(sql,id,user.getUserID());
+            update(sql,user.getUserID(),id);
+        }
+        String sql = "UPDATE FRIENDSREQUESTS SET STATUS = ?";
+        update(sql,value);
     }
 }

@@ -2,7 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="util.DBconnect" %>
 <%@ page import="dao.UserDao" %>
-<%@ page import="static dao.UserDao.getUser" %><%--
+<%@ page import="static dao.UserDao.getUser" %>
+<%@ page import="entity.FriendsRequest" %><%--
   Created by IntelliJ IDEA.
   User: Water
   Date: 2019/7/14
@@ -35,39 +36,21 @@
 <body>
 
 <%
-    String sql1 = "SELECT * FROM USERS WHERE ID = 1";
-    User user = getUser(sql1);
+    User user = (User) session.getAttribute("user");
 %>
+
 <jsp:include page="header.jsp"></jsp:include>
 
 <div class="container">
-    <aside class="main-sidebar">
-        <section class="sidebar">
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="../img/1.png" class="img-circle" alt="User Image">
-                </div>
-            </div>
-
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header"><span class="fa-lg">管理菜单</span></li>
-                <li><a href="../JSP/CollectionDirectory.jsp"><i class="fa fa-link"></i> <span>收藏夹</span></a></li>
-                <li><a href="../JSP/Friends.jsp"><i class="fa fa-link"></i> <span>好友列表</span></a></li>
-                <%
-                    if (user.getPrivilege()){
-                %>
-                <li><a href="../JSP/UserManage.jsp"><i class="fa fa-link"></i> <span>人员管理</span></a></li>
-                <li><a href="../JSP/WorkManage.jsp"><i class="fa fa-link"></i> <span>作品管理</span></a></li>
-                <%
-                    }
-                %>
-            </ul>
-        </section>
-    </aside>
     <nav class="navbar navbar-default pull-left side navbar-static-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">我的信息</a>
+            </div>
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="../img/1.png" class="img-circle" alt="User Image">
+                </div>
             </div>
             <div>
                 <p class="navbar-text myLine">用户名:<%=user.getName()%></p>
@@ -95,29 +78,30 @@
             <div class="input-group">
                 <h2>好友请求</h2>
                 <%
-                    String sql = "SELECT * FROM FRIENDSREQUESTS WHERE RECIPIENTID = ?";
-                    ArrayList<User> users = UserDao.getUsers(sql,user.getUserID());
-                    session.setAttribute("friends",users);
-                    for (User tempUser: users){
-                        session.setAttribute("friend",tempUser);
+                    ArrayList<FriendsRequest> friendsRequests = (ArrayList<FriendsRequest>) session.getAttribute("friendRequests");
+                    if (friendsRequests!= null && friendsRequests.size() > 0){
+                        for (FriendsRequest friendsRequest: friendsRequests){
+                            if (friendsRequest.getStatus() == 0){
                 %>
-                <form action="/requestFriend" method="post" role="form">
                     <div class="card">
                         <div class="card-view">
                             <img src="../img/1.png" class="img-circle" alt="User Image">
                         </div>
-                        <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
-                        <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>
-                        <p class="navbar-text myLine">个性签名:<%=tempUser.getSignature()%></p>
-                        <label>
-                            <input type="radio" name="power" value="同意">
-                        </label>同 意
-                        <label>
-                            <input type="radio" name="power" value="拒绝">
-                        </label>拒 绝
+                        <p class="navbar-text myLine">用户名:<%=friendsRequest.getSender().getName()%></p>
+                        <p class="navbar-text myLine">电子邮箱:<%=friendsRequest.getSender().getEmail()%></p>
+                        <p class="navbar-text myLine">个性签名:<%=friendsRequest.getSender().getSignature()%></p>
+                        <%=
+                        "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=1'><label></label>同 意</a>" +
+                         "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=-1'><label></label>拒 绝</a>"
+                        %>
                     </div>
-                    <button type="submit" class="btn btn-default">确 定</button>
-                </form>
+                <%
+                            }
+                        }
+                    }else{
+                %>
+                <text>还没有人想加你~真伤心</text>
+
                 <%
                     }
                 %>

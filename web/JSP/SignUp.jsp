@@ -3,11 +3,24 @@
 
 <html>
 <head>
+<%--    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">--%>
+<%--    <link rel="stylesheet" href="../css/style.css">--%>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+<%--    <link rel="stylesheet" href="../css/font-awesome.css">--%>
+<%--    <link rel="stylesheet" href="../css/AdminLTE.css">--%>
+<%--    <script src="../js/jquery-3.3.1.min.js"></script>--%>
+<%--    <script src="../js/bootstrap.js"></script>--%>
+<%--    <script src="../js/adminlte.js"></script>--%>
+<%--    <script src="../js/bootstrap-table.js"></script>--%>
+<%--    <script src="../js/bootstrap-table-zh-CN.js"></script>--%>
+<%--    <script src="../js/bootstrap-table-treegrid.js"></script>--%>
+<%--    <script src="../js/jquery.treegrid.min.js"></script>--%>
+<%--    <script src="../js/bootstrap-tab.js"></script>--%>
+<%--    <script type="text/javascript" src="../js/swiper.min.js"></script>--%>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>用户登录</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
         .container{
             display:table;
@@ -30,7 +43,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<%--<jsp:include page="header.jsp"></jsp:include>--%>
 
 <div class="container">
     <div class="row row-centered">

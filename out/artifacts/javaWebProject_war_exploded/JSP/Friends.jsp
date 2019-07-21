@@ -1,13 +1,7 @@
 <%@ page import="entity.User" %>
 <%@ page import="static dao.UserDao.getUser" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dao.UserDao" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/14
-  Time: 9:37
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="dao.UserDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -45,65 +39,63 @@
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
         <div class="input-group">
-            <input type="text" class="form-control" onkeydown="onKeyDown(event)"/>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-search" onclick="doSearch()"></i>搜索</span>
+            <input type="text" class="form-control" name="search" onkeydown="onKeyDown(event,search.value)"/>
+            <span class="input-group-addon" onclick="doSearch(search.value)">搜索</span>
         </div>
     </div>
 </div>
-<div class="divBorder">
 
+
+<div class="divBorder">
     <div class="form-inline">
         <div class="input-group">
 
             <h2>我的好友</h2>
                 <%
-                    String sql = "SELECT * FROM FRIENDSREQUESTS WHERE RECIPIENTID = ?";
-                    ArrayList<User> users = UserDao.getUsers(sql,user.getUserID());
-                    session.setAttribute("friends",users);
-                    for (User tempUser: users){
-                        session.setAttribute("friend",tempUser);
+                    ArrayList<User> myFriends = (ArrayList<User>) session.getAttribute("myFriends");
+                    if (myFriends != null && myFriends.size() > 0){
+                    for (User tempUser: myFriends){
                 %>
-                <form action="requestFriendServlet" method="post" role="form">
+<%--                <form action="" method="post" role="form">--%>
                     <div class="card">
-                        <div class="card-view">
-                            <img src="../img/1.png" class="img-circle" alt="User Image">
+                        <div class="card-body">
+                            <div class="card-view">
+                                <img src="../img/1.png" class="img-circle" alt="User Image">
+                            </div>
+                            <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
+                            <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>
+                            <p class="navbar-text myLine">个性签名:<%=tempUser.getSignature()%></p>
                         </div>
-                        <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
-                        <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>
-                        <p class="navbar-text myLine">个性签名:<%=tempUser.getSignature()%></p>
+                        <form action="/sendMessage?id=<%=tempUser.getUserID()%>" method="post">
+                            <label>想对TA说的话：</label>
+                            <input type="text" name="message">
+                            <a><button type="submit" class="btn btn-default btn-primary" >发 送</button></a>
+                        </form>
+                        <%=
+                        "<a href='/deleteFriend?id=" + tempUser.getUserID() + "' <button class='btn btn-default btn-primary'>删 除</button></a>" +
+                        "<a href='/getFriendInfo?name=" + tempUser.getName() + "' <button class='btn btn-default btn-primary'>查 看</button></a>"
+                        %>
                     </div>
 
+<%--                </form>--%>
 
-<%--                    <a href="FriendInformation.jsp?name=" + <%tempUser.getName();%><button class="btn btn-default btn-primary">查 看</button></a>--%>
-                    <button type="submit" class="btn btn-default btn-primary">删 除</button>
-                </form>
+<%--                <%--%>
+<%--                    String str = " <a href='FriendInformation.jsp?name="+--%>
+<%--                            tempUser.getName()+"'> <button class='btn btn-default btn-primary'>查 看</button></a>";--%>
+<%--                %>--%>
+<%--                <%=str%>--%>
                 <%
-                    String str = " <a href='FriendInformation.jsp?name="+
-                            tempUser.getName()+"'> <button class='btn btn-default btn-primary'>查 看</button></a>";
+                        }
+                    }else {
                 %>
-                <%=str%>
-                <%
-                    }
-                %>
-
+                    <text>目前还没有好友哦~快去添加好友</text>
+            <%
+                }
+            %>
         </div>
     </div>
 </div>
 
-<div class="divBorder">
-    <div class="form-inline">
-        <div class="input-group">
-            <h2>好友请求</h2>
-            <div class="card">
-                <div class="card-header">好友请求1</div>
-                <div class="card-body">
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

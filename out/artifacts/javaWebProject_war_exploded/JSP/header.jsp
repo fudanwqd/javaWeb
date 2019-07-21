@@ -1,11 +1,7 @@
-<%@ page import="entity.User" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/19
-  Time: 15:10
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 
 <header class="main-header">
     <a href="Home.jsp" class="logo">
@@ -17,17 +13,31 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right" id="mytab">
-                    <li><a href="Home.jsp">首页</a></li>
-                    <li><a href="Search.jsp">搜索</a></li>
-
+                    <li><a href="../JSP/Home.jsp">首页</a></li>
+                    <li><a href="../JSP/Search.jsp">搜索</a></li>
                     <%
                         User user = (User) session.getAttribute("user");
-                        //                        session.setAttribute("user",user);
                         if (user != null){
                     %>
 
+
+                    <%
+                        if (user.getPrivilege()){
+                    %>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理栏<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../JSP/UserManage.jsp">人员管理</a></li>
+                            <li><a href="../JSP/WorkManage.jsp">作品管理</a></li>
+                        </ul>
+                    </li>
+
+                    <%
+                        }
+                    %>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <%=
                             user.getName()
                             %>
@@ -36,8 +46,9 @@
                             <li><a href="../JSP/User.jsp">个人信息</a></li>
                             <li><a href="../JSP/Friends.jsp">好友列表</a></li>
                             <li><a href="../JSP/CollectionDirectory.jsp">收藏夹</a></li>
+                            <li><a href="../JSP/Chat.jsp">信箱</a></li>
                             <li role="separator" class="divider"></li>
-                            <li ><a onclick="quit()"> 退出登录</a></li>
+                            <li ><a href='/quit'> 退出登录</a></li>
                         </ul>
                     </li>
                     <%

@@ -25,6 +25,8 @@ public class HomeServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/Home.jsp");
         requestDispatcher.forward(request,response);
     }
+
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         doPost(request,response);
     }

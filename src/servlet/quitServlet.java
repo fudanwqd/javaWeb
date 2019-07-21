@@ -6,17 +6,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "testServlet",value = {"/testServlet"})
-public class testServlet extends HttpServlet {
+@WebServlet("/quit")
+public class quitServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        out.write("sssss");
-        out.close();
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getSession().removeAttribute("user");
+        response.sendRedirect("/JSP/Home.jsp");
     }
 }
