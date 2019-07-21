@@ -17,9 +17,13 @@ import java.util.List;
 @WebServlet("/ExhibitionDetailsServlet")
 public class ExhibitionDetailsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+
         int id = Integer.parseInt(request.getParameter("id"));
         Artwork artwork = ArtworkDao.SearchById(id);
-        request.setAttribute("artwork",artwork);
+        int prehot = artwork.getHot();
+        ArtworkDao.UpdateHotById(id,prehot+1);
+        Artwork newartwork = ArtworkDao.SearchById(id);
+        request.setAttribute("artwork",newartwork);
         HttpSession session = request.getSession();
         List<Collectionrelation> collectionrelations =  (List<Collectionrelation>)session.getAttribute("mycollections");
         boolean hasCollect = false;

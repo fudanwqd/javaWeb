@@ -29,13 +29,8 @@ public class newjdbc  {
 
     @Test
     public void Test(){
-        List<Artwork> hotArtworks = new LinkedList<>();
-        //List<Artwork> freshArtworks = new LinkedList<>();
-        hotArtworks = ArtworkDao.SearchLimitByOrder("hot",3);
-       // freshArtworks = ArtworkDao.SearchLimitByOrder("uploadingTime",3);
-
-        System.out.printf(hotArtworks.get(0).toString());
-
+//        List<Artwork>  artworks= ArtworkDao.selectArtworks("select * from artwork where description like '%cm%'");
+//          System.out.println(artworks.size());
     }
 
 public static void main(String[] args) throws Exception{

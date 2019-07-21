@@ -8,7 +8,7 @@
   Time: 15:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=GBK" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -67,94 +67,23 @@
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="input-group">
-                <form action="/SearchServlet" method="post">
-                <input type="text" class="form-control" name="search"/>
-                <span class="input-group-addon"><button type="submit"><i class="glyphicon glyphicon-search"></i></button></span>
+                <input type="text" class="form-control" id="search">
+                <span class="input-group-addon"><a onclick="doSearch()"><i class="glyphicon glyphicon-search"></i></a></span>
                 </form>
             </div>
         </div>
     </div>
     <section>
         <h2>搜索结果：</h2>
-
-
-        <%
-            List<Artwork> limitsearches = null;
-//            if (request.getAttribute("searches") != null) {
-                limitsearches = (List<Artwork>) request.getAttribute("limitsearches");
-    //            }
-            if (limitsearches != null) {
-                int row;
-                if(limitsearches.size()%3==0){
-                    row = limitsearches.size()/3;
-                }else{
-                    row = limitsearches.size()/3+1;
-                }
-
-        %>
-        <table>
-
-                <%
-               for(int i=0;i<row;i++){
-                   %>
-            <tr>
-                    <%
-                       for(int j=3*i;j<limitsearches.size()&&j<3*(i+1);j++){
-                           %>
-                <td>
-                    <table class="frame">
-                        <tr>
-                            <td rowspan="2" ><img class="showPicture" src=<%=limitsearches.get(i*3+j).getImgPath()%>>
-                            </td>
-                            <td><%=limitsearches.get(i * 3 + j).getName()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>朝代：<%=limitsearches.get(i * 3 + j).getTime()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"> <p class="description"><%=limitsearches.get(i * 3 + j).getDescription()%></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=limitsearches.get(i * 3 + j).getId()%>">详情</a></button>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                    <%
-                            }
-                           }
-
-                           %>
-
-                <%--<div class="row text-center">--%>
-                    <%--<ul class="pagination">--%>
-                        <%--<li><a href="/SearchServlet?page=${requestScope.prev}">&laquo;</a></li>--%>
-                        <%--<%--%>
-                            <%--int Allpage = (int)request.getAttribute("last");--%>
-                            <%--for(int i=0;i<Allpage;i++){--%>
-                        <%--%>--%>
-                        <%--<li><a href="/SearchServlet?page=<%=i%>"><%=i%></a></li>--%>
-                        <%--<%--%>
-                            <%--}--%>
-                        <%--%>--%>
-                        <%--<li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>--%>
-                    <%--</ul>--%>
-                <%--</div>--%>
-            <%
-                            }
-            else{
-                %>
-                        <div class="row text-center">无搜索结果！</div>
-                        <%
-            }
-            %>
-
+        <table id="searchdiv">
+        </table>
     </section>
     <script type="text/javascript">
+        $(document).ready(function() {
+            paging(1,"");
+
+        });
+
         function onKeyDown(event, Searchvalue) {
             var e = event || window.event || arguments.callee.caller.arguments[0];
             if (e && e.keyCode == 13) { // enter 键
@@ -163,12 +92,35 @@
 
         }
 
-        function doSearch(searchValue) {
+        function doSearch() {
+           var searchValue = document.getElementById("search").value;
+            paging(1,searchValue);
             // window.location.href = "/SearchServlet?search=" + searchValue;
-     alert(1);
         }
 
+        function paging(page,search="") {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
 
+            xmlhttp.onreadystatechange=function(){
+
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    document.getElementById("searchdiv").innerHTML=xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("GET","/SearchServlet?page="+page+"&search="+search,true);
+            xmlhttp.send();
+        }
     </script>
 </div>
 </body>

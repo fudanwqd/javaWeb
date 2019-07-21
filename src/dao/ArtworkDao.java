@@ -16,14 +16,18 @@ public class ArtworkDao {
         List<Artwork> artworks = selectArtworks("select * from artwork order by hot desc");
         return artworks;
     }
-    public static List<Artwork> SearchAllByName(String prefix){
+    public static List<Artwork> SearchLimitOrderByHotdesc(int i,int num){
+        List<Artwork> artworks = selectArtworks("select * from artwork order by hot desc limit ?,?",i,num);
+        return artworks;
+    }
+    public static List<Artwork> SearchAllLikeNameOrderByHotdesc(String prefix){
         List<Artwork> artworks = new LinkedList<>();
-       artworks =selectArtworks("select * from artwork where name like ? or description like ? or location like ?",prefix,prefix,prefix);
+       artworks =selectArtworks("select * from artwork where name like ? or description like ? or location like ?  order by hot desc","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%");
         return artworks;
 }
-    public static List<Artwork> SearchLimitByName(String prefix, int i, int num){
+    public static List<Artwork> SearchLimitLikeNameOrderByHotdesc(String prefix, int i, int num){
         List<Artwork> artworks = new LinkedList<>();
-        artworks=selectArtworks("select count(*) from artwork where name like ? limit ? , ?",prefix,i,num);
+        artworks=selectArtworks("select * from artwork where name like ? or description like ? or location like ? order by hot desc limit ? , ?","%"+prefix+"%","%"+prefix+"%","%"+prefix+"%",i,num);
         return artworks;
     }
     public static List<Artwork> SearchLimitByOrder(String type, int limit){
@@ -35,6 +39,29 @@ public class ArtworkDao {
         List<Artwork> artworks = new LinkedList<>();
        artworks = selectArtworks("select * from artwork where id = ?",id);
         return artworks.get(0);
+    }
+    public static void UpdateHotById(int id,int hot){
+        if(SearchById(id)!=null)
+        updateArtworks("update artwork set hot = ? where id = ? ",hot,id);
+    }
+    private static void updateArtworks(String sql,Object...args){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            connection = DBconnect.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]); // 为预编译sql设置参数
+            }
+            preparedStatement.executeUpdate();
+
+    }catch(Exception e){
+            System.out.println("数据库更新异常");
+            e.printStackTrace();
+        }finally {
+            DBconnect.closeAll(connection,preparedStatement,resultSet);
+        }
     }
     private static List<Artwork> selectArtworks(String sql, Object...args){
         List<Artwork> artworks = new LinkedList<>();

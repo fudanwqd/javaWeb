@@ -82,6 +82,14 @@
                         <%=artwork.getLocation()%>
                     </td>
                 </tr>
+                <tr class="line">
+                    <td>
+                        热度
+                    </td>
+                    <td>
+                        <%=artwork.getHot()%>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="row">

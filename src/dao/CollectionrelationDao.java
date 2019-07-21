@@ -79,7 +79,7 @@ public class CollectionrelationDao {
             }
             preparedStatement.executeUpdate();
         }catch(Exception e){
-            System.out.println("数据库查询异常");
+            System.out.println("数据库更新异常");
             e.printStackTrace();
         }finally {
             DBconnect.closeAll(connection,preparedStatement,resultSet);
