@@ -55,8 +55,8 @@
     <h2 class="text-center">收藏夹</h2>
     <table>
         <%
-
             List<Artwork> collections = (List<Artwork>)request.getAttribute("collections");
+            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
             if(collections!=null){
                 for(int i=0;i<collections.size();i++){
         %>
@@ -74,7 +74,18 @@
                     <tr>
                         <td>
                             <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=collections.get(i).getId()%>">详情</a></button>
-                            <button type="button"><a href="#">取消收藏</a></button>
+                            <button type="button"><a href="/DeleteCollectionServlet?id=<%=collections.get(i).getId()%>">取消收藏</a></button>
+                            <%
+                                if(ispublics.get(i)){
+                                    %>
+                            <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为私有收藏</a></button>
+                            <%
+                                }else{
+                                    %>
+                                    <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为公开收藏</a></button>
+                            <%
+                                }
+                            %>
                         </td>
                     </tr>
 
@@ -85,7 +96,11 @@
 
         <%
                 }
-        }
+        }else{
+            %>
+        <div class="row text-center">暂无藏品！快去收藏一件吧</div>
+        <%
+                }
         %>
     </table>
 </section>

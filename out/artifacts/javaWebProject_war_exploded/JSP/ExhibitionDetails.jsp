@@ -1,4 +1,7 @@
-<%@ page import="entity.Artwork" %><%--
+<%@ page import="entity.Artwork" %>
+<%@ page import="entity.Collectionrelation" %>
+<%@ page import="java.util.List" %>
+<%@ page import="entity.User" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -82,14 +85,24 @@
             </table>
         </div>
         <div class="row">
-
-            <button type="button"><a href="#">收藏</a></button>
             <%
-                session.getAttribute("user");
+                User user = (User)session.getAttribute("user");
+                if(user!=null){
+                boolean hasCollect = (boolean)request.getAttribute("hasCollect");
+               if(hasCollect){
+                   %>
+            <button type="button"><a href="/DeleteCollectionServlet?id=<%=artwork.getId()%>">取消收藏</a></button>
+            <%
+               }else{
             %>
-
-            <button type="button"><a href="CollectionDirectory.jsp">查看收藏夹</a></button>
+            <button type="button"><a href="/AddCollectionServlet?id=<%=artwork.getId()%>">收藏</a></button>
             <%
+                }
+            %>
+            <button type="button"><a href="/CollectionDirectoryServlet">查看收藏夹</a></button>
+
+            <%
+                }
                 }
             %>
         </div>

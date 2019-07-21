@@ -1,5 +1,7 @@
 <%@ page import="entity.Artwork" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page language="java" pageEncoding="utf-8" %>
+<%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -35,7 +37,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <head>
-    <title>’π∆∑À—À˜</title>
+    <title>Â±ïÂìÅÊêúÁ¥¢</title>
 </head>
 <style>
     .showPicture{
@@ -46,8 +48,17 @@
         margin:2px 20px;
         border: outset;
         border-color: black;
-        border-width: 3px;}
+        border-width: 3px;
+        width: 350px;
+        height: 350px;}
 
+
+    .description{
+        overflow:hidden;
+        text-overflow : ellipsis;
+        height:200px;
+
+    }
 </style>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -56,54 +67,59 @@
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="input-group">
-                <input type="text" class="form-control" name="search" onkeydown="onKeyDown(event,search.value)"/>
-                <span class="input-group-addon"><i class="glyphicon glyphicon-search"
-                                                   onclick="doSearch(search.value)"></i></span>
+                <form action="/SearchServlet" method="post">
+                <input type="text" class="form-control" name="search"/>
+                <span class="input-group-addon"><button type="submit"><i class="glyphicon glyphicon-search"></i></button></span>
+                </form>
             </div>
         </div>
     </div>
     <section>
-        <h2>À—À˜Ω·π˚£∫</h2>
+        <h2>ÊêúÁ¥¢ÁªìÊûúÔºö</h2>
 
 
         <%
             List<Artwork> limitsearches = null;
-            if (request.getAttribute("searches") != null) {
+//            if (request.getAttribute("searches") != null) {
                 limitsearches = (List<Artwork>) request.getAttribute("limitsearches");
-            }
+    //            }
             if (limitsearches != null) {
+                int row;
+                if(limitsearches.size()%3==0){
+                    row = limitsearches.size()/3;
+                }else{
+                    row = limitsearches.size()/3+1;
+                }
+
         %>
-        <table>
+        <table id="searchdiv">
 
                 <%
-               for(int i=0;i<3;i++){
+               for(int i=0;i<row;i++){
                    %>
             <tr>
                     <%
-                       for(int j=0;j<3;j++){
+                       for(int j=3*i;j<limitsearches.size()&&j<3*(i+1);j++){
                            %>
                 <td>
                     <table class="frame">
                         <tr>
-                            <td rowspan="2"><img class="showPicture" src=<%=limitsearches.get(i*3+j).getImgPath()%>>
+                            <td rowspan="2" ><img class="showPicture" src=<%=limitsearches.get(i*3+j).getImgPath()%>>
                             </td>
                             <td><%=limitsearches.get(i * 3 + j).getName()%>
                             </td>
                         </tr>
                         <tr>
-                            <td>≥Ø¥˙£∫<%=limitsearches.get(i * 3 + j).getTime()%>
+                            <td>Êúù‰ª£Ôºö<%=limitsearches.get(i * 3 + j).getTime()%>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><%=limitsearches.get(i * 3 + j).getDescription()%>
+                            <td colspan="2"> <p class="description"><%=limitsearches.get(i * 3 + j).getDescription()%></p>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=limitsearches.get(i * 3 + j).getId()%>">œÍ«È</a></button>
-                            </td>
-                            <td>
-                                <button type="button"><a href="#"> ’≤ÿ</a></button>
+                                <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=limitsearches.get(i * 3 + j).getId()%>">ËØ¶ÊÉÖ</a></button>
                             </td>
                         </tr>
                     </table>
@@ -114,25 +130,25 @@
 
                            %>
 
-                <div class="row text-center">
-                    <ul class="pagination">
-                        <li><a href="/SearchServlet?page=${requestScope.prev}">&laquo;</a></li>
-                        <%
-                            int Allpage = (int)request.getAttribute("last");
-                            for(int i=0;i<Allpage;i++){
-                        %>
-                        <li><a href="/SearchServlet?page=<%=i%>"><%=i%></a></li>
-                        <%
-                            }
-                        %>
-                        <li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>
-                    </ul>
-                </div>
+                <%--<div class="row text-center">--%>
+                    <%--<ul class="pagination">--%>
+                        <%--<li><a href="/SearchServlet?page=${requestScope.prev}">&laquo;</a></li>--%>
+                        <%--<%--%>
+                            <%--int Allpage = (int)request.getAttribute("last");--%>
+                            <%--for(int i=0;i<Allpage;i++){--%>
+                        <%--%>--%>
+                        <%--<li><a href="/SearchServlet?page=<%=i%>"><%=i%></a></li>--%>
+                        <%--<%--%>
+                            <%--}--%>
+                        <%--%>--%>
+                        <%--<li><a href="/SearchServlet?page=${requestScope.next}">&raquo;</a></li>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
             <%
                             }
             else{
                 %>
-                        <div class="row text-center">ŒﬁÀ—À˜Ω·π˚£°</div>
+                        <div class="row text-center">Êó†ÊêúÁ¥¢ÁªìÊûúÔºÅ</div>
                         <%
             }
             %>
@@ -141,7 +157,7 @@
     <script type="text/javascript">
         function onKeyDown(event, Searchvalue) {
             var e = event || window.event || arguments.callee.caller.arguments[0];
-            if (e && e.keyCode == 13) { // enter º¸
+            if (e && e.keyCode == 13) { // enter ÈîÆ
                 doSearch(Searchvalue);
             }
 

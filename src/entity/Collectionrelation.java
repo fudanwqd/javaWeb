@@ -3,10 +3,12 @@ package entity;
 public class Collectionrelation {
     private int  userID;
     private int ArtworkID;
+    private boolean isPublic;
 
-    public Collectionrelation(int userID, int artworkID) {
+    public Collectionrelation(int userID, int artworkID, boolean isPublic) {
         this.userID = userID;
         ArtworkID = artworkID;
+        this.isPublic = isPublic;
     }
 
     public int getUserID() {
@@ -23,5 +25,13 @@ public class Collectionrelation {
 
     public void setArtworkID(int artworkID) {
         ArtworkID = artworkID;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
     }
 }

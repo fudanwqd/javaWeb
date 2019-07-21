@@ -1,4 +1,6 @@
-<%--
+<%@ page import="entity.User" %>
+<%@ page import="entity.Artwork" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -52,48 +54,54 @@
 
     <h2 class="text-center">收藏夹</h2>
     <table>
+        <%
+            List<Artwork> collections = (List<Artwork>)request.getAttribute("collections");
+            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
+            if(collections!=null){
+                for(int i=0;i<collections.size();i++){
+        %>
         <tr>
             <td>
                 <table class="collection">
                     <tr>
                         <td rowspan="2">
-                            <img src="../img/金石/古父己卣.jpg" height="150px" width="150px">
+                            <img src=<%=collections.get(i).getImgPath()%> height="150px" width="150px">
                         </td>
                         <td>
-                            古父己卣
+                            <%=collections.get(i).getName()%>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button type="button"><a href="ExhibitionDetails.jsp">详情</a></button>
-                            <button type="button"><a href="#">取消收藏</a></button>
+                            <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=collections.get(i).getId()%>">详情</a></button>
+                            <button type="button"><a href="/DeleteCollectionServlet?id=<%=collections.get(i).getId()%>">取消收藏</a></button>
+                            <%
+                                if(ispublics.get(i)){
+                                    %>
+                            <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为私有收藏</a></button>
+                            <%
+                                }else{
+                                    %>
+                                    <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为公开收藏</a></button>
+                            <%
+                                }
+                            %>
                         </td>
                     </tr>
 
                 </table>
             </td>
         </tr>
-        <tr>
-            <td>
-                <table class="collection">
-                    <tr>
-                        <td rowspan="2">
-                            <img src="../img/金石/古父己卣.jpg" height="150px" width="150px">
-                        </td>
-                        <td>
-                            古父己卣
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button"><a href="ExhibitionDetails.jsp">详情</a></button>
-                            <button type="button"><a href="#">取消收藏</a></button>
-                        </td>
-                    </tr>
 
-                </table>
-            </td>
-        </tr>
+
+        <%
+                }
+        }else{
+            %>
+        <div class="row text-center">暂无藏品！快去收藏一件吧</div>
+        <%
+                }
+        %>
     </table>
 </section>
 </body>

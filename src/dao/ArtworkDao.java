@@ -12,9 +12,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ArtworkDao {
+    public static List<Artwork> SearchAllOrderByHotdesc(){
+        List<Artwork> artworks = selectArtworks("select * from artwork order by hot desc");
+        return artworks;
+    }
     public static List<Artwork> SearchAllByName(String prefix){
         List<Artwork> artworks = new LinkedList<>();
-       artworks =selectArtworks("select count(*) from artwork where name like ?",prefix);
+       artworks =selectArtworks("select * from artwork where name like ? or description like ? or location like ?",prefix,prefix,prefix);
         return artworks;
 }
     public static List<Artwork> SearchLimitByName(String prefix, int i, int num){
