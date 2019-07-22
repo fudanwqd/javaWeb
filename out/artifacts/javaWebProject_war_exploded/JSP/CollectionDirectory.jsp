@@ -1,6 +1,8 @@
 <%@ page import="entity.User" %>
 <%@ page import="entity.Artwork" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="entity.Collectionrelation" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2019/7/12
@@ -56,7 +58,8 @@
     <table>
         <%
             List<Artwork> collections = (List<Artwork>)request.getAttribute("collections");
-            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
+//            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
+            List<Collectionrelation> collectionrelations = (List<Collectionrelation>)session.getAttribute("mycollections");
             if(collections!=null){
                 for(int i=0;i<collections.size();i++){
         %>
@@ -70,13 +73,18 @@
                         <td>
                             <%=collections.get(i).getName()%>
                         </td>
+                        <td>收藏时间：<%=collectionrelations.get(i).getCollectTime()%></td>
+                    </tr>
+                    <tr>
+                        <td> 馆藏：<%=collections.get(i).getLocation()%></td>
+                        <td> 热度：<%=collections.get(i).getHot()%></td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=collections.get(i).getId()%>">详情</a></button>
                             <button type="button"><a href="/DeleteCollectionServlet?id=<%=collections.get(i).getId()%>">取消收藏</a></button>
                             <%
-                                if(ispublics.get(i)){
+                                if(collectionrelations.get(i).isPublic()){
                                     %>
                             <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为私有收藏</a></button>
                             <%

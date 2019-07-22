@@ -91,7 +91,8 @@ public class CollectionrelationDao {
             int userID = resultSet.getInt(1);
             int artworkID = resultSet.getInt(2);
             boolean isPublic = resultSet.getBoolean(3);
-            collectionrelation = new Collectionrelation(userID,artworkID,isPublic);
+            Date collectTime = resultSet.getTime(4);
+            collectionrelation = new Collectionrelation(userID,artworkID,isPublic,collectTime);
         } catch (SQLException e) {
             e.printStackTrace();
         }

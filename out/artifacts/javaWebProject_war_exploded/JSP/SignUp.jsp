@@ -3,11 +3,12 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>用户登录</title>
+
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/signUp.js"></script>
+    <title>用户登录</title>
     <style>
         .container{
             display:table;
@@ -28,32 +29,44 @@
             margin-right:-4px;
         }
     </style>
+    <%
+        String error = request.getParameter("error");
+        if (error != null){
+    %>
+    <script>
+        alert("用户名或密码错误！");
+    </script>
+    <%
+        }
+    %>
+
 </head>
 <body>
+
+
 <%--<jsp:include page="header.jsp"></jsp:include>--%>
 
 <div class="container">
     <div class="row row-centered">
         <div class="col-md-6 col-centered">
             <h2 style="text-align: center">欢迎登录</h2>
-            <form action="/signUp" method="post" role="form" >
+<%--            <form action="/signUp" method="post" role="form" >--%>
                 <div class="input-group input-group-md">
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名"/>
+                    <label for="userName"></label><input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名"/>
                 </div>
                 <div class="input-group input-group-md">
                     <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
+                    <label for="password"></label><input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-primary btn-block">登 录</button>
-            </form>
+                <text id="error" style="display: none">用户名或密码不能为空</text>
+                <button type="submit" class="btn btn-primary btn-block" onclick="signUp()">登 录</button>
+<%--            </form>--%>
         </div>
     </div>
 </div>
 
 
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

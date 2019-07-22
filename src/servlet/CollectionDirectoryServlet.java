@@ -27,10 +27,11 @@ public class CollectionDirectoryServlet extends HttpServlet {
         for(int i=0;i<collectionrelations.size();i++){
             Artwork aArtwork = ArtworkDao.SearchById(collectionrelations.get(i).getArtworkID());
             collections.add(aArtwork);
-            ispublics.add(collectionrelations.get(i).isPublic());
+//            ispublics.add(collectionrelations.get(i).isPublic());
+
         }
         request.setAttribute("collections",collections);
-        request.setAttribute("collectionPublic",ispublics);
+//        request.setAttribute("collectionPublic",ispublics);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/CollectionDirectory.jsp");
         requestDispatcher.forward(request,response);
     }

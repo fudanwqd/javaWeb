@@ -16,79 +16,43 @@ import static dao.UserDao.*;
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userName = request.getParameter("userName");
+    }
+
+
+
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userName = request.getParameter("name");
         String password = request.getParameter("password");
-        String rePassword = request.getParameter("rePassword");
-        String emailAddress = request.getParameter("emailAddress");
-        String verifyCode = request.getParameter("verifyCode");
+        String emailAddress = request.getParameter("email");
         String power = request.getParameter("power");
+        String page = request.getParameter("page");
 
         String sql = "SELECT * FROM USERS WHERE NAME = ?" ;
-
         HttpSession session = request.getSession();
 
         if (isExit(sql,userName)){
-            response.sendRedirect("Login.jsp");
+            if (page.equals("1")) {
+                response.sendRedirect("/JSP/Login.jsp?error=1");
+            }else {
+                response.sendRedirect("/JSP/AddUser.jsp?error=1");
+            }
         }else {
-            if (isNameLegal(userName) && isEmailAddress(emailAddress) && isPasswordLegal(password) && isPasswordLegal(password,rePassword) && isVerifyCode(verifyCode)){
-                boolean isPower = false;
-                if (power != null){
-                    isPower = true;
-                }
-                String sqlInsert = "INSERT INTO USERS(name,password,privilege,email,collections,friends) VALUE (?,?,?,?,?,?)";
+            boolean isPower = false;
+            if (power.equals("admin")) {
+                isPower = true;
+            }
+            String sqlInsert = "INSERT INTO USERS(name,password,privilege,email) VALUE (?,?,?,?)";
+            update(sqlInsert, userName, password, isPower, emailAddress);
 
-                update(sqlInsert,userName,password,isPower,emailAddress,"","");
-
-
-                User user = getUser(sql,userName);
-                session.setAttribute("userName",userName);
-                session.setAttribute("password",password);
-                session.setAttribute("user",user);
+            User user = getUser(sql, userName);
+            session.setAttribute("user", user);
+            if (page.equals("1")) {
                 response.sendRedirect("/JSP/Home.jsp");
             }else {
-                response.sendRedirect("/JSP/Login.jsp");
+                response.sendRedirect("/JSP/UserManage.jsp");
             }
         }
-    }
-
-
-    private boolean isNameLegal(String name){
-        if (name == null || name.equals("")){
-            return false;
-        }
-        return (name.length() >= 4 && name.length() <= 15);
-    }
-
-    private boolean isVerifyCode(String verifyCode){
-        return true;
-    }
-
-    private boolean isPasswordLegal(String password){
-        if (password == null || password.equals("")){
-            return false;
-        }
-        String regex = "^[a-z0-9A-Z]+$";
-        return (password.length() >= 6 && password.length() <= 10) &&  password.matches(regex);
-    }
-
-    private boolean isPasswordLegal(String password,String rePassword){
-        return password.equals(rePassword);
-    }
-
-    private boolean isEmailAddress(String emailAddress){
-        if (emailAddress == null || emailAddress.equals("")){
-            return false;
-        }
-
-        //字母开头，@后加字母或数字，后面加点，后面字母或数字
-        String regex1 = "[a-zA-Z]+[a-zA-Z0-9_]*@[a-zA-Z0-9]+[.][a-zA-Z0-9]+";
-
-        //..........在regex1基础上，后面加.和其他字母组成的后缀
-        String regex2 = "[a-zA-Z]+[a-zA-Z0-9_]*@[a-zA-Z0-9]+[.][a-zA-Z0-9]+[.][a-zA-Z0-9]+";
-        return emailAddress.matches(regex1) || emailAddress.matches(regex2);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

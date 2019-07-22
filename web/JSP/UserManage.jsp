@@ -1,12 +1,6 @@
 <%@ page import="entity.User" %>
 <%@ page import="static dao.UserDao.getUsers" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/14
-  Time: 9:36
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
@@ -70,7 +64,7 @@
                 <tbody>
                 <%
                     String sql = "SELECT ID,NAME,NAME,PASSWORD,EMAIL,RECENTSIGNUP FROM USERS";
-                    List<User> users = getUsers(sql);
+                    List<User> users = getUsers(sql,1);
                     for (User tempUser : users){
                 %>
                 <tr>
@@ -86,10 +80,16 @@
                     <td><%=tempUser.getEmail()%></td>
                     <td><%=tempUser.getRecentSignUp()%></td>
                     <td>
-                        <a href="#" class="btn left20" role="button">
-                        <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修改用户身份</a>
-                        <a href="#" class="btn left20" role="button">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
+                        <%=
+                        "<a href='/setUser?name=" + tempUser.getName() + "&privilege=" + tempUser.getPrivilege() + "' class='btn left20' role='button'> " +
+                                "<span class='glyphicon glyphicon-edit' aria-hidden='true' style='margin-right: 5px'></span>修改用户身份</a>"
+                        %>
+
+                        <%=
+                        "<a href='/deleteUser?id=" + tempUser.getUserID() + "' class='btn left20' role='button'>\n" +
+                        " <span class='glyphicon glyphicon-minus' aria-hidden='true'style='margin-right:5px'></span>删 除</a>"
+                        %>
+
                     </td>
                 </tr>
                 <%

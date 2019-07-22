@@ -42,6 +42,18 @@ public class setUserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String privilege = request.getParameter("privilege");
 
+//        boolean power = true;
+        int power = 1;
+        if (privilege.equals("true")){
+//            power = false;
+            power = 0;
+        }
+
+        String sql = "UPDATE USERS SET PRIVILEGE ='" + power +"' where NAME = ?";
+        update(sql,name);
+        response.sendRedirect("/JSP/UserManage.jsp");
     }
 }
