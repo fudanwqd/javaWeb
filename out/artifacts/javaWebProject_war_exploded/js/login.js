@@ -2,6 +2,11 @@
 let right = [false,false,false,false,false];
 
 
+
+window.onload = function () {
+  change();
+};
+
 function login(){
     isNameLegal();
     isPasswordLegal();
@@ -23,18 +28,42 @@ function login(){
         }
     }
 
-    // location.href = "/JSP/Home.jsp?name="+ document.getElementById("userName").value;
-    // document.getElementById("ss").innerHTML = "/login?name="+document.getElementById("userName").value+"&password="+
-    //     document.getElementById("password").value+
-    //     "&email="+document.getElementById("emailAddress").value
-    //     +"&power="+power;
 
     window.location.href="/login?name="+document.getElementById("userName").value+"&password="+
         document.getElementById("password").value+
-        "&email="+document.getElementById("emailAddress").value+"&power="+"&power="+power;
-    // window.location.href = "/JSP/Home.jsp";
+        "&email="+document.getElementById("emailAddress").value+"&power="+"&power="+power+"&page="+document.getElementById("page").value;
 }
 
+
+function add() {
+    isNameLegal();
+    isPasswordLegal();
+    isEmailLegal();
+    isRePasswordLegal();
+    let i = 0;
+    for (let boo in right){
+        if (i > 3){
+            return;
+        }
+        if (!boo){
+            return;
+        }
+        i++;
+    }
+
+    let obj = document.getElementsByName("power");
+    let power;
+    for(let i=0; i<obj.length; i ++){
+        if(obj[i].checked){
+            power = obj[i].value;
+        }
+    }
+
+    window.location.href="/login?name="+document.getElementById("userName").value+"&password="+
+        document.getElementById("password").value+
+        "&email="+document.getElementById("emailAddress").value+"&power="+"&power="+power+"&page="+document.getElementById("page");
+
+}
 
 function hide(parts){
     document.getElementById(parts).style.display="none";

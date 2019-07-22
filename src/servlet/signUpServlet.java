@@ -17,10 +17,17 @@ import static dao.UserDao.*;
 @WebServlet("/signUp")
 public class signUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
 
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userName = request.getParameter("name");
+        String password = request.getParameter("password");
+        String page = request.getParameter("page");
+
+
+        response.getWriter().write(page);
         String sql = "SELECT * FROM USERS WHERE NAME = ? AND PASSWORD = ?" ;
         User user = getUser(sql,userName,password);
 
@@ -37,14 +44,10 @@ public class signUpServlet extends HttpServlet {
             ArrayList<FriendsRequest> friendsRequests = FriendsRequestDao.getFriendsRequest(sqlFriendsRequest,user.getUserID());
             session.setAttribute("friendRequests",friendsRequests);
 
-
-            response.sendRedirect("/JSP/Home.jsp");
+            response.sendRedirect(page);
+//            response.sendRedirect("/JSP/SignUp.jsp?go=1");
         }else {
-            response.sendRedirect("/JSP/SignUp.jsp");
+            response.sendRedirect("/JSP/SignUp.jsp?error=1");
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

@@ -17,7 +17,7 @@
 
 
     <welcome-file-list>
-        <welcome-file>/JSP/Login.jsp</welcome-file>
+        <welcome-file>/JSP/Home.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

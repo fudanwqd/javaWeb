@@ -48,23 +48,32 @@ public class loginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String emailAddress = request.getParameter("email");
         String power = request.getParameter("power");
+        String page = request.getParameter("page");
 
         String sql = "SELECT * FROM USERS WHERE NAME = ?" ;
         HttpSession session = request.getSession();
 
         if (isExit(sql,userName)){
-            response.sendRedirect("/JSP/Login.jsp?error=1");
+            if (page.equals("1")) {
+                response.sendRedirect("/JSP/Login.jsp?error=1");
+            }else {
+                response.sendRedirect("/JSP/AddUser.jsp?error=1");
+            }
         }else {
             boolean isPower = false;
-            if (power.equals("admin")){
+            if (power.equals("admin")) {
                 isPower = true;
             }
             String sqlInsert = "INSERT INTO USERS(name,password,privilege,email) VALUE (?,?,?,?)";
-            update(sqlInsert,userName,password,isPower,emailAddress);
+            update(sqlInsert, userName, password, isPower, emailAddress);
 
-            User user = getUser(sql,userName);
-            session.setAttribute("user",user);
-            response.sendRedirect("/JSP/Home.jsp");
+            User user = getUser(sql, userName);
+            session.setAttribute("user", user);
+            if (page.equals("1")) {
+                response.sendRedirect("/JSP/Home.jsp");
+            }else {
+                response.sendRedirect("/JSP/UserManage.jsp");
+            }
         }
 
     }

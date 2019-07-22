@@ -91,6 +91,7 @@
             <label>
                 <input type="radio" name="power" value="user" checked="checked">
             </label>普通用户
+            <text style="display: none" id="page">1</text>
                 <br/>
                 <button class="btn btn-primary btn-block" onclick="login()">注 册</button>
 <%--            </form>--%>
