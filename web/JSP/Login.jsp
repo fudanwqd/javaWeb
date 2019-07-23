@@ -26,8 +26,30 @@
         }
     </style>
 
+
     <script type="text/javascript" src="../js/login.js"></script>
-<%--    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>--%>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../js/md5.js"></script>
+    <script>
+        function login() {
+            if(isAlllegal()&&isCodeLegal()){
+                let obj = document.getElementsByName("power");
+                let power;
+                for (let i = 0; i < obj.length; i++) {
+                    if (obj[i].checked) {
+                        power = obj[i].value;
+                        break;
+                    }
+                }
+                let password = document.getElementById("password");
+                let realPassword = hex_md5(password.value);
+
+                window.location.href = "/login?name=" + document.getElementById("userName").value + "&password=" +
+                    realPassword +
+                    "&email=" + document.getElementById("emailAddress").value + "&power=" + power + "&page=" + document.getElementById("page").innerText;
+            }
+        }
+    </script>
 
 </head>
 
@@ -48,7 +70,6 @@
     <div class="row row-centered">
         <div class="col-md-6 col-centered">
             <h2 style="text-align: center">用户注册</h2>
-<%--            <form action="/login" method="post" role="form" name="login">--%>
                 <div class="input-group input-group-md">
                     <span class="input-group-addon" id="sizing-addon1"></span>
                     <label for="userName"></label><input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名">
@@ -94,7 +115,6 @@
             <text style="display: none" id="page">1</text>
                 <br/>
                 <button class="btn btn-primary btn-block" onclick="login()">注 册</button>
-<%--            </form>--%>
         </div>
     </div>
 </div>

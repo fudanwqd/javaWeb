@@ -2,6 +2,7 @@ package servlet;
 
 import dao.ArtworkDao;
 import dao.CollectionrelationDao;
+import dao.UserDao;
 import entity.Artwork;
 import entity.Collectionrelation;
 import entity.User;
@@ -26,6 +27,8 @@ public class AddCollectionServlet extends HttpServlet {
         session.setAttribute("mycollections",collections);
         List<Artwork> dynamicArtworks = ArtworkDao.dynamicArtwork(user);
         session.setAttribute("dynamicArtworks",dynamicArtworks);
+        List<User> dynamicFriends = UserDao.dynamicFriends(user);
+        session.setAttribute("dynamicFriends",dynamicFriends);
         response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID);
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {

@@ -1,8 +1,10 @@
 package servlet;
 
 import dao.ArtworkDao;
+import dao.CollectionrelationDao;
 import dao.UserDao;
 import entity.Artwork;
+import entity.Collectionrelation;
 import entity.User;
 
 import javax.servlet.RequestDispatcher;
@@ -20,8 +22,10 @@ public class getFriendInfoServlet extends HttpServlet {
         String name = request.getParameter("name");
         String sql = "SELECT * FROM USERS WHERE NAME = ?";
         User friend = UserDao.getUser(sql,name);
-        String sql1 = "SELECT * FROM COLLECTIONRELATION WHERE USERID = ?";
-        List<Artwork> artworks = ArtworkDao.selectArtworks(sql1,friend.getUserID());
+//        String sql1 = "SELECT * FROM COLLECTIONRELATION WHERE USERID = ?";
+//        List<Artwork> artworks = ArtworkDao.selectArtworks(sql1,friend.getUserID());
+        List<Collectionrelation> collections = CollectionrelationDao.selectCollectionById(friend.getUserID());
+        List<Artwork> artworks = ArtworkDao.getFromRelation(collections);
         request.setAttribute("collections",artworks);
         request.setAttribute("friend",friend);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/FriendInformation.jsp");
@@ -30,6 +34,6 @@ public class getFriendInfoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+      doPost(request,response);
     }
 }

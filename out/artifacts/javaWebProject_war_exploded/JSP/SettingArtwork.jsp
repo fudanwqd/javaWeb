@@ -17,17 +17,39 @@
     <script src="../js/bootstrap.js"></script>
     <script src="../js/bootstrapValidator.min.js"></script>
     <title>修改信息</title>
+
+    <%
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String sql = "SELECT * FROM ARTWORK WHERE ID = ?";
+        Artwork artwork = ArtworkDao.getArtwork(sql,id);
+
+
+        if (request.getParameter("error")!=null){
+            int error = Integer.parseInt(request.getParameter("error"));
+            if (error == 1){
+
+    %>
+    <script>
+        alert("文件过大，不能上传！")
+    </script>
+    <%
+    }else if (error == 2){
+    %>
+    <script>
+        alert("上传文件格式错误！！");
+    </script>
+    <%
+            }
+        }
+    %>
+
+
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 
-<%
 
-    int id = Integer.parseInt(request.getParameter("id"));
-    String sql = "SELECT * FROM ARTWORK WHERE ID = ?";
-    Artwork artwork = ArtworkDao.getArtwork(sql,id);
-
-%>
 
 <div class="container-fluid panel-body" style="padding-bottom:0px">
     <form class="form-horizontal"  action="/setArtwork" method="post" enctype="multipart/form-data">
@@ -36,11 +58,19 @@
                 修改展品信息
             </h4>
 
+            <input type="text" style="display: none;" name="id" value="<%=artwork.getId()%>" >
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">作品名:</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="name" value="<%=artwork.getName()%>">
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="col-sm-1 control-label">种类:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="description" value="<%=artwork.getType()%>">
                     </div>
                 </div>
 
@@ -52,13 +82,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-1 control-label">上传图片:</label>
+                    <label class="col-sm-1 control-label">上传图片:(5M以内)</label>
+                    <text>格式要求：png、jpg</text>
+                    <br>
                     <div class="col-sm-4">
                         <input type="file" name="path"/><br>
-                        <text>（只支持png格式）</text>
                         <text>原有图片</text>
                         <br>
-                        <img src="<%=artwork.getImgPath()%>" alt="">
+                        <img src="<%=artwork.getImgPath()%>" alt="??">
                     </div>
                 </div>
 
@@ -75,19 +106,22 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-1 control-label">介绍视频:</label>
+                    <label class="col-sm-1 control-label">上传视频:(5M以内)</label>
+                    <text>格式要求：mp4</text>
+                    <br>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="videoPath" value="<%=artwork.getVideoPath()%>">
+                        <input type="file" name="videoPath"/><br>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <br>
 
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-1">
-                <button type="submit" class="btn btn-primary" href="Person.jsp" >保 存</button>
+                <button type="submit" class="btn btn-primary" >保 存</button>
             </div>
 
             <div class="col-sm-1">

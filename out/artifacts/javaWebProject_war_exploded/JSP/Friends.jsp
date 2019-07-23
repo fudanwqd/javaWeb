@@ -44,6 +44,7 @@
         margin:0;
         padding: 0;
         border: 0;
+        background: white;
     }
 </style>
 
@@ -72,7 +73,7 @@
         <th>用户名</th>
         <th>邮箱</th>
         <th>个性签名</th>
-        <th>添加好友</th>
+        <th>执行操作</th>
     </tr>
     <div class="text-center"><h4 style="color: grey" >通过关键字去搜索好友吧！</h4></div>
 </table>
@@ -116,7 +117,7 @@
                 <th>用户名</th>
                 <th>邮箱</th>
                 <th>个性签名</th>
-                <th>添加好友</th>
+                <th>执行操作</th>
             </tr>
             <%
                 if(dynamicFriends!=null&&dynamicFriends.size()>0){
@@ -133,7 +134,7 @@
                     <%=dynamicFriends.get(i).getSignature()%>
                 </td>
                 <td>
-                    <button><a href="#">添加好友</a></button>
+                    <button><a href="/sendRequest?id=<%=dynamicFriends.get(i).getUserID()%>">添加好友</a></button>
                 </td>
             </tr>
             <%

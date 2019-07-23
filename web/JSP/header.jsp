@@ -4,7 +4,7 @@
 
 
 <header class="main-header">
-    <a href="Home.jsp" class="logo">
+    <a href="/JSP/Home.jsp" class="logo">
         <span class="logo-mini"><b>ZK</b>JZ</span>
         <span class="logo-lg"><b>Welcome</b> 张江博物馆</span>
     </a>

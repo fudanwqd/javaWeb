@@ -46,7 +46,6 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-
 <div class="container">
     <%
         Artwork artwork =null;
@@ -117,12 +116,26 @@
             %>
             <button type="button"><a href="/CollectionDirectoryServlet">查看收藏夹</a></button>
 
-            <%
-                }
-                }
-            %>
+<%
+    }
+%>
         </div>
     </div>
+    <div class="col-lg-4">
+        <h2>相关视频:</h2>
+        <div class="media border p-1">
+            <video src="<%=artwork.getVideoPath()%>" controls="controls" style="width: 100%; height: auto; object-fit: fill">
+                您的浏览器不支持 video 标签。
+            </video>
+        </div>
+    </div>
+
 </div>
+<%
+    }
+%>
+<%--<div style="float: right; width:40%">--%>
+     <%--<video style="width:400px; height: 400px;" src=<%=artwork.getVideoPath()%>--%>
+<%--</div>--%>
 </body>
 </html>

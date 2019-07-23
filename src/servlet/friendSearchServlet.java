@@ -21,7 +21,6 @@ public class friendSearchServlet extends HttpServlet {
         String research = request.getParameter("friendsearch");
         HttpSession session = request.getSession();
         List<User> friends = (List<User>)session.getAttribute("myFriends");
-        System.out.println(research);
         List<User> searchFriends = new LinkedList<>();
         if(!research.equals("")) {
              searchFriends = UserDao.selectUsers("select * from users where name like ? or email like ?", "%" + research + "%", "%" + research + "%");
@@ -45,7 +44,7 @@ public class friendSearchServlet extends HttpServlet {
                 if(UserDao.isExistIn(friends,searchFriends.get(i))){
                     stringBuilder.append("<td><button><a href=\"/getFriendInfo?name="+searchFriends.get(i).getName()+"\">查看</a></button></td></tr>");
                 }else{
-                    stringBuilder.append( "<td><button><a href=\"#\">添加好友</a></button></td>\n" +
+                    stringBuilder.append( "<td><button><a href=\"/sendRequest?id="+searchFriends.get(i).getUserID()+"\">添加好友</a></button></td>\n" +
                             "    </tr>");
                 }
             }

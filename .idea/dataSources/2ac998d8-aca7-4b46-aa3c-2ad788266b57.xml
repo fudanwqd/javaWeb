@@ -1186,6 +1186,7 @@
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;../img/video.mp4&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="295" parent="280" name="uploadingTime">

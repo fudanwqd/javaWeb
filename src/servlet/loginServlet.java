@@ -26,6 +26,7 @@ public class loginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String emailAddress = request.getParameter("email");
         String power = request.getParameter("power");
+        System.out.println(power);
         String page = request.getParameter("page");
 
         String sql = "SELECT * FROM USERS WHERE NAME = ?" ;
@@ -41,13 +42,15 @@ public class loginServlet extends HttpServlet {
             boolean isPower = false;
             if (power.equals("admin")) {
                 isPower = true;
+                System.out.println("2222");
             }
             String sqlInsert = "INSERT INTO USERS(name,password,privilege,email) VALUE (?,?,?,?)";
             update(sqlInsert, userName, password, isPower, emailAddress);
 
-            User user = getUser(sql, userName);
-            session.setAttribute("user", user);
+
             if (page.equals("1")) {
+                User user = getUser(sql, userName);
+                session.setAttribute("user", user);
                 response.sendRedirect("/JSP/Home.jsp");
             }else {
                 response.sendRedirect("/JSP/UserManage.jsp");

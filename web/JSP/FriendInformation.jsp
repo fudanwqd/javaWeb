@@ -1,27 +1,14 @@
 <%@ page import="entity.User" %>
-<%@ page import="static dao.UserDao.getUser" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="entity.Artwork" %><%--
-  Created by IntelliJ IDEA.
-  User: Water
-  Date: 2019/7/18
-  Time: 19:48
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="entity.Artwork" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    String name = request.getParameter("name");
-    //    User user = (User) session.getAttribute("user");
-    String sql = "SELECT * FROM USERS WHERE NAME = ?";
-    User friend = getUser(sql,name);
+    User friend = (User) request.getAttribute("friend");
+    List<Artwork> artworksList = (List<Artwork>) request.getAttribute("artworks");
 %>
 
-<%
-    //    User user = (User) session.getAttribute("user");
-    String sql1 = "SELECT * FROM USERS WHERE ID = 1";
-    User user = getUser(sql1);
-%>
+
 <html>
 
 <head>
@@ -43,17 +30,15 @@
     <script src="../js/bootstrap-table-treegrid.js"></script>
     <script src="../js/jquery.treegrid.min.js"></script>
     <script src="../js/bootstrap-tab.js"></script>
-    <title><%= name%></title>
+    <title><%= friend.getName()%></title>
 </head>
 
 <jsp:include page="header.jsp"></jsp:include>
 
-
-
 <nav class="navbar navbar-default pull-left side navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">ta的信息</a>
+            <h2 style="text-align: center">ta的信息</h2>
         </div>
         <div>
             <p class="navbar-text myLine">用户名:<%=friend.getName()%></p>
@@ -64,34 +49,26 @@
     </div>
 </nav>
 
-<div>
-    <h2>ta的收藏</h2>
+<div class="text-center">
+    <h2 style="text-align: center">ta的收藏</h2>
     <%
-        ArrayList<String> collectionsList = friend.getCollections();
-        String[] collections = (String[]) collectionsList.toArray();
-        int size = collections.length;
-        for (int i = size - 1;i > 0;i++){
-            //arework对象
-//            Artwork artwork = new Artwork();
-
+        if (artworksList != null && artworksList.size() > 0){
+            int j = 0;
+            for (int i = artworksList.size() - 1;i >= 0;i--){
+                if (j >= 5){
+                    break;
+                }
+                j++;
     %>
-    <form action="/requestFriend" method="post" role="form">
-        <div class="card">
-            <div class="card-view">
-                <img src="../img/1.png" class="img-circle" alt="User Image">
-            </div>
-            <p class="navbar-text myLine">用户名:<%=tempUser.getName()%></p>
-            <p class="navbar-text myLine">电子邮箱:<%=tempUser.getEmail()%></p>
-            <p class="navbar-text myLine">个性签名:<%=tempUser.getSignature()%></p>
-            <label>
-                <input type="radio" name="power" value="同意">
-            </label>同 意
-            <label>
-                <input type="radio" name="power" value="拒绝">
-            </label>拒 绝
-        </div>
-        <button type="submit" class="btn btn-default">确 定</button>
-    </form>
+    <div class="card-view">
+        <p class="myLine"><a href="/ExhibitionDetailsServlet?id=<%=artworksList.get(i).getId()%>">展品名:<%=artworksList.get(i).getName()%></a></p>
+<%--        <img src="<%=artworksList.get(i).getImgPath()%>" alt="" style="height: 500px;width: 500px">--%>
+    </div>
+    <%
+            }
+        }else {
+    %>
+    <h4 style="color: grey;">ta还没有收藏品哦~</h4>
     <%
         }
     %>

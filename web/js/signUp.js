@@ -11,15 +11,15 @@ function show(parts){
 }
 
 
-function signUp() {
-    let page = document.referrer;
-    if (isNameLegal() && isPasswordLegal()) {
-        window.location.href="/signUp?name="+document.getElementById("userName").value+"&password="+
-            document.getElementById("password").value+"&page=" + page;
-    }else {
-        show("error");
-    }
-}
+// function signUp() {
+//     let page = document.referrer;
+//     if (isNameLegal() && isPasswordLegal()) {
+//         window.location.href="/signUp?name="+document.getElementById("userName").value+"&password="+
+//             $.md5(document.getElementById("password").value)+"&page=" + page;
+//     }else {
+//         show("error");
+//     }
+// }
 function isNameLegal() {
     let name = document.getElementById("userName");
 

@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.UserDao;
 import entity.User;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import static dao.UserDao.getUsers;
 import static dao.UserDao.update;
 
 @WebServlet("/deleteFriend")
@@ -27,16 +30,13 @@ public class deleteFriendServlet extends HttpServlet {
         update(sql,idd,user.getUserID());
         update(sql,user.getUserID(),idd);
 
-        ArrayList<User> friends = (ArrayList<User>) request.getSession().getAttribute("myFriends");
-
-        for (User friend : friends){
-            if (friend.getUserID() == idd){
-                friends.remove(friend);
-                break;
-            }
-        }
-
-        request.getSession().setAttribute("myFriends",friends);
+        String sqlFriends = "SELECT * FROM FRIENDSRELATION WHERE USERID = ?";
+        ArrayList<User> myFriends = getUsers(sqlFriends,2,user.getUserID());
+        request.getSession().setAttribute("myFriends",myFriends);
+        String sqlFriendsMessage = "DELETE FROM FRIENDMESSAGES WHERE SENDID = ? OR RECEIVEID = ?";
+        update(sqlFriendsMessage,id,id);
+        List<User> dynamicFriends = UserDao.dynamicFriends(user);
+        request.getSession().setAttribute("dynamicFriends",dynamicFriends);
 
         response.sendRedirect("/JSP/Friends.jsp");
     }

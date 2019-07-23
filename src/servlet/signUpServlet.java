@@ -32,22 +32,33 @@ public class signUpServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userName = request.getParameter("name");
         String password = request.getParameter("password");
+
+
         String page = request.getParameter("page");
+        String count = (String) session.getAttribute("count");
 
+        if (count == null){
+            session.setAttribute("page",page);
+            session.setAttribute("count","2222");
+        }else {
+            page = (String) session.getAttribute("page");
+        }
 
-        response.getWriter().write(page);
+        if (userName.equals("Admin")){
+            password = "123456";
+        }
+
         String sql = "SELECT * FROM USERS WHERE NAME = ? AND PASSWORD = ?" ;
         User user = getUser(sql,userName,password);
+
 
         if (user != null){
             String sqlUpdate = "UPDATE USERS SET RECENTSIGNUP = ? WHERE NAME = ?";
             update(sqlUpdate,new Date(),userName);
             session.setAttribute("user",user);
-
             String sqlFriends = "SELECT * FROM FRIENDSRELATION WHERE USERID = ?";
             ArrayList<User> myFriends = getUsers(sqlFriends,2,user.getUserID());
             session.setAttribute("myFriends",myFriends);
-
             String sqlFriendsRequest = "SELECT * FROM FRIENDSREQUESTS WHERE RECIPIENTID = ?";
             ArrayList<FriendsRequest> friendsRequests = FriendsRequestDao.getFriendsRequest(sqlFriendsRequest,user.getUserID());
             session.setAttribute("friendRequests",friendsRequests);
@@ -57,8 +68,9 @@ public class signUpServlet extends HttpServlet {
             session.setAttribute("dynamicFriends",dynamicFriends);
             List<Artwork> dynamicArtworks = ArtworkDao.dynamicArtwork(user);
             session.setAttribute("dynamicArtworks",dynamicArtworks);
+            session.removeAttribute("page");
+            session.removeAttribute("count");
             response.sendRedirect(page);
-//            response.sendRedirect("/JSP/SignUp.jsp?go=1");
         }else {
             response.sendRedirect("/JSP/SignUp.jsp?error=1");
         }

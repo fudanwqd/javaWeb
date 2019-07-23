@@ -7,75 +7,51 @@ window.onload = function () {
 function isAlllegal(){
     return isNameLegal()&&isPasswordLegal()&&isRePasswordLegal()&&isEmailLegal();
 }
-function login() {
-    //  var nameLegal = isNameLegal();
-    // var passwordLegal = isPasswordLegal();
-    //  var repasswordLegal = isRePasswordLegal();
-    // var emailLegal = isEmailLegal();
-    // var codeLegal =  isCodeLegal();
-
-    // let bool = true;
-    // for (let boo in right) {
-    //     if (boo === false) {
-    //         bool = false;
-    //         break;
-    //     }
-    // }
-
-    // if (bool) {
-    if(isAlllegal()&&isCodeLegal()){
-        let obj = document.getElementsByName("power");
-        let power;
-        for (let i = 0; i < obj.length; i++) {
-            if (obj[i].checked) {
-                power = obj[i].value;
-                break;
-            }
-        }
-
-        window.location.href = "/login?name=" + document.getElementById("userName").value + "&password=" +
-            document.getElementById("password").value +
-            "&email=" + document.getElementById("emailAddress").value + "&power=" + "&power=" + power + "&page=" + document.getElementById("page").innerText;
-
-    }
-}
 
 
 
-function add() {
-    // isNameLegal();
-    // isPasswordLegal();
-    // isEmailLegal();
-    // isRePasswordLegal();
-    // let bool = true;
-    // let i = 0;
-    // for (let boo in right){
-    //     if (i > 3){
-    //         return;
-    //     }
-    //     if (boo === false){
-    //         bool = false;
-    //         return;
-    //     }
-    //     i++;
-    // }
-    // if (bool){
-      if(isAlllegal()){
-        let obj = document.getElementsByName("power");
-        let power;
-        for(let i=0; i<obj.length; i ++){
-            if(obj[i].checked){
-                power = obj[i].value;
-                break;
-            }
-        }
+// function login() {
+//     if(isAlllegal()&&isCodeLegal()){
+//         let obj = document.getElementsByName("power");
+//         let power;
+//         for (let i = 0; i < obj.length; i++) {
+//             if (obj[i].checked) {
+//                 power = obj[i].value;
+//                 break;
+//             }
+//         }
+//         // let ss = $.md5(document.getElementById("password").value);
+//
+//         // alert(ss);
+//         alert(power);
+//         alert( "/login?name=" + document.getElementById("userName").value + "&password=" +
+//             document.getElementById("password").value +
+//             "&email=" + document.getElementById("emailAddress").value + "&power=" + power + "&page=" + document.getElementById("page").innerText);
+//         // window.location.href = "/login?name=" + document.getElementById("userName").value + "&password=" +
+//         //     $.md5(document.getElementById("password").value) +
+//         //     "&email=" + document.getElementById("emailAddress").value + "&power=" + power + "&page=" + document.getElementById("page").innerText;
+//
+//     }
+// }
 
-        window.location.href="/login?name="+document.getElementById("userName").value+"&password="+
-            document.getElementById("password").value+
-            "&email="+document.getElementById("emailAddress").value+"&power="+"&power="+power+"&page="+document.getElementById("page").innerText;
 
-    }
-}
+
+// function add() {
+//     if(isAlllegal()){
+//         let obj = document.getElementsByName("power");
+//         let power;
+//         for(let i=0; i<obj.length; i ++){
+//             if(obj[i].checked){
+//                 power = obj[i].value;
+//                 break;
+//             }
+//         }
+//
+//         window.location.href="/login?name="+document.getElementById("userName").value+"&password="+
+//             $.md5(document.getElementById("password").value)+
+//             "&email="+document.getElementById("emailAddress").value+"&power="+power+"&page="+document.getElementById("page").innerText;
+//     }
+// }
 
 function hide(parts){
     document.getElementById(parts).style.display="none";
@@ -130,6 +106,7 @@ function isPasswordLegal() {
         hide("passwordLength");
         return false;
     }
+
     hide("passwordLength");
     hide("passwordError");
     hide("passwordNull");

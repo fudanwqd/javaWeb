@@ -45,7 +45,7 @@
     <div class="divBorder">
         <div class="form-inline">
             <div class="input-group">
-                <a href="AddUser.jsp" class="btn left20" role="button">
+                <a href="/JSP/AddUser.jsp" class="btn left20" role="button">
                     <span class=" glyphicon glyphicon-plus" aria-hidden="true" style="margin-right: 5px"></span>添 加</a>
             </div>
         </div>
