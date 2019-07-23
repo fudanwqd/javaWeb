@@ -17,8 +17,6 @@
     <title>收藏夹</title>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/font-awesome.css">
@@ -32,8 +30,6 @@
     <script src="../js/bootstrap-table-treegrid.js"></script>
     <script src="../js/jquery.treegrid.min.js"></script>
     <script src="../js/bootstrap-tab.js"></script>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <style>
         section{
             background-color:gainsboro;
@@ -60,7 +56,7 @@
             List<Artwork> collections = (List<Artwork>)request.getAttribute("collections");
 //            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
             List<Collectionrelation> collectionrelations = (List<Collectionrelation>)session.getAttribute("mycollections");
-            if(collections!=null){
+            if(collections!=null&&collections.size()>0){
                 for(int i=0;i<collections.size();i++){
         %>
         <tr>
@@ -82,8 +78,12 @@
                     <tr>
                         <td>
                             <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=collections.get(i).getId()%>">详情</a></button>
+                        </td>
+                        <td>
                             <button type="button"><a href="/DeleteCollectionServlet?id=<%=collections.get(i).getId()%>">取消收藏</a></button>
-                            <%
+                        </td>
+                        <td>
+                        <%
                                 if(collectionrelations.get(i).isPublic()){
                                     %>
                             <button type="button"><a href="/ChangeCollectionPublicServlet?id=<%=collections.get(i).getId()%>">设为私有收藏</a></button>
@@ -106,9 +106,51 @@
                 }
         }else{
             %>
-        <div class="row text-center">暂无藏品！快去收藏一件吧</div>
+        <div class="row text-center">暂无藏品！快去收藏一件吧！</div>
         <%
                 }
+        %>
+
+    </table>
+    <h2 class="text-center">猜您喜欢</h2>
+    <table>
+        <%
+            List<Artwork> dynamicArtworks = (List<Artwork>) session.getAttribute("dynamicArtworks");
+            if(dynamicArtworks.size()>0){
+                 for(int i=0;i<dynamicArtworks.size();i++){
+                     %>
+        <tr>
+            <td>
+                <table class="collection">
+                    <tr>
+                        <td rowspan="3">
+                            <img src=<%=dynamicArtworks.get(i).getImgPath()%> height="150px" width="150px">
+                        </td>
+                        <td>
+                            <%=dynamicArtworks.get(i).getName()%>
+                        </td>
+                        <td>
+                            热度：<%=dynamicArtworks.get(i).getHot()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"> <%=dynamicArtworks.get(i).getDescription().substring(0,40)+"..."%></td>
+                        <td> <button type="button"><a href="/ExhibitionDetailsServlet?id=<%=dynamicArtworks.get(i).getId()%>">详情</a></button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button"><a href="/AddCollectionServlet?id=<%=dynamicArtworks.get(i).getId()%>">收藏</a></button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <%
+
+                 }
+            }else{
+                %>
+        <div class="row text-center">暂无推荐啦！快去搜索一下吧！</div>
+        <%
+            }
         %>
     </table>
 </section>

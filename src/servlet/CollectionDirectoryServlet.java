@@ -22,16 +22,8 @@ public class CollectionDirectoryServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
          HttpSession session = request.getSession();
         List<Collectionrelation> collectionrelations= (List<Collectionrelation>) session.getAttribute("mycollections");
-        List<Artwork> collections = new LinkedList<>();
-        List<Boolean> ispublics = new LinkedList<>();
-        for(int i=0;i<collectionrelations.size();i++){
-            Artwork aArtwork = ArtworkDao.SearchById(collectionrelations.get(i).getArtworkID());
-            collections.add(aArtwork);
-//            ispublics.add(collectionrelations.get(i).isPublic());
-
-        }
+        List<Artwork> collections =ArtworkDao.getFromRelation(collectionrelations);
         request.setAttribute("collections",collections);
-//        request.setAttribute("collectionPublic",ispublics);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/CollectionDirectory.jsp");
         requestDispatcher.forward(request,response);
     }

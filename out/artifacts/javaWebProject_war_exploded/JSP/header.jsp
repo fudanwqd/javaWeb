@@ -45,7 +45,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="../JSP/User.jsp">个人信息</a></li>
                             <li><a href="../JSP/Friends.jsp">好友列表</a></li>
-                            <li><a href="../JSP/CollectionDirectory.jsp">收藏夹</a></li>
+                            <li><a href="/CollectionDirectoryServlet">收藏夹</a></li>
                             <li><a href="../JSP/Chat.jsp">信箱</a></li>
                             <li role="separator" class="divider"></li>
                             <li ><a href='/quit'> 退出登录</a></li>

@@ -20,7 +20,7 @@
 <style>
     img{
         border-radius: 60%;
-        alignment: right;
+
     }
     td{
         padding: 10px;
@@ -52,8 +52,8 @@
 
                 <a href="/ExhibitionDetailsServlet?id=<%=hotArtworks.get(0).getId()%>">
                     <img  src=<%=hotArtworks.get(0).getImgPath()%>>
+                <p class="text-center font-italic"><%=hotArtworks.get(0).getName()%></p>
                 </a>
-                <p class="text-center"><%=hotArtworks.get(0).getName()%></p>
                 <div class="layer-mask"></div>
             </div>
             <div class="swiper-slide ">

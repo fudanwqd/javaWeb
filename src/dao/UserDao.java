@@ -1,10 +1,12 @@
 package dao;
 import entity.Artwork;
+import entity.Collectionrelation;
 import entity.User;
 import org.junit.Test;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 import static util.DBconnect.closeAll;
 import static util.DBconnect.getConnection;
@@ -31,7 +33,6 @@ public class UserDao {
         }
     }
 
-
     //column 标志着去哪一列取ID，因为在friendRequest数据表中，我们要找的ID在第二列。
     public static ArrayList<User> getUsers(String sql,int column, Object... args){
         Connection connection = null;
@@ -57,7 +58,46 @@ public class UserDao {
         }
         return users;
     }
+public static List<User> selectUsers(String sql,Object...args){
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    List<User> users = new LinkedList<>();
+    try {
+        connection = getConnection();
+        preparedStatement = connection.prepareStatement(sql);
 
+        for (int i = 0; i < args.length; i++) {
+            preparedStatement.setObject(i + 1, args[i]); // 为预编译sql设置参数
+        }
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            User user = getUserByRs(resultSet);
+            users.add(user);
+        }
+    }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeAll(connection,preparedStatement,resultSet);
+        }
+    return users;
+}
+private static User getUserByRs(ResultSet resultSet){
+    User user = null;
+    try {
+        int id = resultSet.getInt(1);
+        String name = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        boolean privilege = resultSet.getBoolean(4);
+        String email = resultSet.getString(5);
+        Date recentSignUp = resultSet.getDate(6);
+        String signature = resultSet.getString(7);
+        user = new User(id, name, password,privilege,email,recentSignUp,signature);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return user;
+}
 
     public  static boolean isExit(String sql,Object... args) {
         Connection connection = null;
@@ -119,91 +159,74 @@ public class UserDao {
         }
         return entity;
     }
-
-
-//    public <T> List<T> getForList(Class<T> clazz, String sql, Object... args){
-//        T entity;
-//        List<T> list = new ArrayList<>();
-//
-//        Connection connection = null;
-//        PreparedStatement preparedStatement = null;
-//        ResultSet resultSet = null;
-//
-//        try {
-//            connection = getConnection();
-//
-//            // 得到PreparedStatement对象
-//            preparedStatement = connection.prepareStatement(sql);
-//
-//            // 为预编译sql设置参数
-//            for (int i = 0; i < args.length; i++) {
-//                preparedStatement.setObject(i + 1, args[i]);
-//            }
-//            resultSet = preparedStatement.executeQuery();
-//
-//            List<Map<String,Object>> values = getList(resultSet);
-//
-//            list = transferMapListToBeanList(clazz,values);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            closeAll(connection,preparedStatement,resultSet);
-//        }
-//
-//        return list;
-//    }
-//
-//    private <T> List<T> transferMapListToBeanList(Class<T> clazz, List<Map<String, Object>> values) throws InstantiationException, IllegalAccessException {
-//        List<T> result = new ArrayList<>();
-//        T entity;
-//        if (values.size() > 0) {
-//            for (Map<String,Object> temp : values) {
-//                entity = clazz.newInstance();
-//                for (Map.Entry<String, Object> entry : temp.entrySet()) {
-//                    String propertyName = entry.getKey();
-//                    Object value = entry.getValue();
-//
-//                    //System.out.println(propertyName + ":" + value);
-//                    //反射有点问题
-////                  ReflectionUtils.setFieldValue(entity,propertyName,value);
-//                }
-//                result.add(entity);
-//            }
-//        }
-//        return result;
-//    }
-//
-//    private List<Map<String,Object>> getList(ResultSet resultSet) throws SQLException {
-//        List<Map<String,Object>> values = new ArrayList<>();
-//        List<String> columnLabels = getColumnLabel(resultSet);
-//        Map<String,Object> map;
-//
-//        while (resultSet.next()) {
-//            map = new HashMap<>();
-//
-//            for (String columnLabel : columnLabels) {
-//                Object columnValue = resultSet.getObject(columnLabel);
-//                map.put(columnLabel, columnValue);
-//            }
-//
-//            values.add(map);
-//        }
-//        return values;
-//    }
-//
-//    private List<String> getColumnLabel(ResultSet rs) throws SQLException {
-//        List<String> labels = new ArrayList<>();
-//
-//        ResultSetMetaData resultSetMetaData = rs.getMetaData();
-//        int columnCount = resultSetMetaData.getColumnCount();
-//
-//        for (int i = 0;i < columnCount;i++) {
-//            labels.add(resultSetMetaData.getColumnLabel(i + 1));
-//        }
-//        return labels;
-//    }
-
+    public static List<User> dynamicFriends(User auser){
+        List<User> dynamicfriends = new LinkedList<>();
+        List<User> friends = UserDao.getUsers("select * from friendsrelation where userID = ?",2,auser.getUserID());
+        List<User> allUser = UserDao.selectUsers("select * from users");
+        List<Collectionrelation> collectionrelations = CollectionrelationDao.selectCollectionById(auser.getUserID());
+        List<Artwork> collections =ArtworkDao.getFromRelation(collectionrelations);
+        List<User> notFriends = new LinkedList<>();
+        List<Integer> scores = new LinkedList<>();
+        for(int i=0;i<allUser.size();i++){
+            if(auser.getUserID()!=allUser.get(i).getUserID()&&!isExistIn(friends,allUser.get(i))){
+                notFriends.add(allUser.get(i));
+            }
+        }
+        if(notFriends.size()>0){
+        for(int i=0;i<notFriends.size();i++){
+                int score = 0;
+                List<User> onesFriends = UserDao.getUsers("select * from friendsrelation where userID = ?",2,allUser.get(i).getUserID());
+                int friendsnum = howManyCover(friends,onesFriends);
+                score+=friendsnum*5;
+                List<Collectionrelation> onesCollectionrelations = CollectionrelationDao.selectCollectionById(allUser.get(i).getUserID());
+               List<Artwork> onesCollections = ArtworkDao.getFromRelation(onesCollectionrelations);
+               int collectionnum = ArtworkDao.howManyCover(collections,onesCollections);
+               score+=collectionnum*3;
+               int typenum = ArtworkDao.howManyInType(collections,onesCollections);
+               score+= typenum*2;
+               scores.add(score);
+            }
+        int[] top = {0,0};
+        int[] topIndex = {-1,-1};
+          for(int i=0;i<scores.size();i++){
+            if(scores.get(i)>top[0]){
+                top[0] = scores.get(i);
+                topIndex[0] = i;
+            }else{
+                if(scores.get(i)>top[1]){
+                    top[1] = scores.get(i);
+                    topIndex[1] = i;
+                }
+            }
+        }
+          if(topIndex[0]!=-1){
+              dynamicfriends.add(notFriends.get(topIndex[0]));
+              if(topIndex[1]!=-1){
+                  dynamicfriends.add(notFriends.get(topIndex[1]));
+              }
+          }
+        }
+        return dynamicfriends;
+    }
+    public static boolean isExistIn(List<User> users,User auser){
+        boolean exist = false;
+        for(int i=0;i<users.size();i++){
+           if(users.get(i).getUserID()==auser.getUserID()){
+               exist = true;
+               break;
+           }
+        }
+        return exist;
+    }
+    private static int howManyCover(List<User> ones,List<User> anothers){
+        int num =0;
+        for(int i=0;i<ones.size();i++){
+            if(isExistIn(anothers,ones.get(i))){
+                num++;
+            }
+        }
+        return num;
+    }
 
 }
 

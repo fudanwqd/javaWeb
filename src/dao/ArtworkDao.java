@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Artwork;
+import entity.Collectionrelation;
+import entity.User;
 import util.DBconnect;
 
 import java.sql.Connection;
@@ -135,8 +137,8 @@ public class ArtworkDao {
             int hot = resultSet.getInt(7);
             String time = resultSet.getString(8);
             String videoPath = resultSet.getString(9);
-//            Date uploadingTime = resultSet.getTime(10);
-            Date uploadingTime = new Date();
+            Date uploadingTime = resultSet.getTime(10);
+       //     Date uploadingTime = new Date();
             newartwork = new Artwork(id, name, type, description, imgPath, location, hot, time, videoPath, uploadingTime);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -170,5 +172,95 @@ public class ArtworkDao {
             closeAll(connection, preparedStatement, resultSet);
         }
         return null;
+    }
+    public static List<Artwork> getFromRelation(List<Collectionrelation> collectionrelations ){
+        List<Artwork> collections = new LinkedList<>();
+        if(collectionrelations!=null&&collectionrelations.size()>0){
+            for(int i=0;i<collectionrelations.size();i++){
+                Artwork aArtwork = ArtworkDao.SearchById(collectionrelations.get(i).getArtworkID());
+                collections.add(aArtwork);
+            }
+        }
+        return collections;
+    }
+    private static boolean isExistIn(List<Artwork> artworks,Artwork artwork){
+        boolean exist = false;
+        for(int i=0;i<artworks.size();i++){
+            if(artworks.get(i).getId()==artwork.getId()){
+                exist = true;
+                break;
+            }
+        }
+        return exist;
+    }
+
+    public static int howManyCover(List<Artwork> ones, List<Artwork> anothers){
+        int num =0;
+        for(int i=0;i<ones.size();i++){
+            if(isExistIn(anothers,ones.get(i))){
+                num++;
+            }
+        }
+        return num;
+    }
+    public static int howManyInType(List<Artwork> ones,List<Artwork> anothers){
+        int num =0;
+        for (int i=0;i<ones.size();i++){
+            String type = ones.get(i).getType();
+            for(int j=0;i<anothers.size();j++){
+                if(type.equals(anothers.get(j).getType())){
+                    num++;
+                    break;
+                }
+            }
+        }
+        return num;
+    }
+    public static List<Artwork> dynamicArtwork(User user) {
+        List<Artwork> dynamicartwork = new LinkedList<>();
+        List<Collectionrelation> collectionrelations = CollectionrelationDao.selectCollectionById(user.getUserID());
+        List<Artwork> collections = ArtworkDao.getFromRelation(collectionrelations);
+        List<String> types = new LinkedList<>();
+        List<Integer> scores = new LinkedList<>();
+        if (collections.size() > 0) {
+            for (int i = 0; i < collections.size(); i++) {
+                boolean exist = false;
+                int index = 0;
+                for (int j = 0; j < types.size(); j++) {
+                    if (collections.get(i).getType().equals(types.get(j))) {
+                        exist = true;
+                        index = j;
+                        break;
+                    }
+                }
+                if (exist) {
+                    scores.set(index, scores.get(index) + 1);
+                } else {
+                    types.add(collections.get(i).getType());
+                    scores.add(1);
+                }
+            }
+            int temp = scores.get(0);
+            int index = 0;
+            for (int i =0;i<scores.size();i++){
+                if(scores.get(i)>temp){
+                    temp = scores.get(i);
+                    index = i;
+                }
+            }
+            String topType = types.get(index);
+            List<Artwork> tempartwork = ArtworkDao.selectArtworks("select * from artwork where type = ? ",topType);
+            for(int i=0;i<tempartwork.size();i++){
+                if(dynamicartwork.size()>=3){
+                    break;
+                }
+                if(!isExistIn(collections,tempartwork.get(i))){
+                    dynamicartwork.add(tempartwork.get(i));
+                }
+            }
+        }else{
+            dynamicartwork = ArtworkDao.SearchLimitOrderByHotdesc(0,3);
+        }
+        return dynamicartwork;
     }
 }

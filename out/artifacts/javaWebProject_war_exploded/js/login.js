@@ -193,7 +193,7 @@ function isCodeLegal() {
 
 
 function change() {
-    document.getElementById("code").innerHTML = Math.floor(Math.random()*10000);
+    document.getElementById("code").innerHTML = Math.floor(1000+Math.random()*9000);
 }
 
 

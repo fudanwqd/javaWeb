@@ -1,6 +1,8 @@
 package servlet;
 
+import dao.ArtworkDao;
 import dao.CollectionrelationDao;
+import entity.Artwork;
 import entity.Collectionrelation;
 import entity.User;
 
@@ -21,6 +23,8 @@ public class DeleteCollectionServlet extends HomeServlet {
         CollectionrelationDao.DeleteCollectionByDoubleId(user.getUserID(),artworkID);
         List<Collectionrelation> collections = CollectionrelationDao.selectCollectionById(user.getUserID());
         session.setAttribute("mycollections",collections);
+        List<Artwork> dynamicArtworks = ArtworkDao.dynamicArtwork(user);
+        session.setAttribute("dynamicArtworks",dynamicArtworks);
         response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID);
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
