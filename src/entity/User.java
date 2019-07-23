@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -10,7 +11,7 @@ public class User {
     private String password;
     private boolean privilege;
     private String email;
-    private Date recentSignUp;
+    private Timestamp recentSignUp;
     private String signature;
 
     public boolean isPrivilege() {
@@ -26,7 +27,7 @@ public class User {
     }
 
     public User(int id , String name, String password, boolean privilege, String email,
-                Date recentSignUp,String signature) {
+                Timestamp recentSignUp,String signature) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -35,7 +36,7 @@ public class User {
         this.recentSignUp = recentSignUp;
         this.signature = signature;
     }
-    public User(String name, String password, boolean privilege, String email, Date recentSignUp) {
+    public User(String name, String password, boolean privilege, String email, Timestamp recentSignUp) {
         this.name = name;
         this.password = password;
         this.privilege = privilege;
@@ -97,14 +98,13 @@ public class User {
         this.privilege = privilege;
     }
 
-    public Date getRecentSignUp() {
+    public Timestamp getRecentSignUp() {
         return recentSignUp;
     }
 
-    public void setRecentSignUp(Date recentSignUp) {
+    public void setRecentSignUp(Timestamp recentSignUp) {
         this.recentSignUp = recentSignUp;
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -18,7 +18,7 @@ ALTER TABLE `artwork`
     ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `artwork`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 INSERT INTO `artwork` (id, name, type, description, imgPath, location,time) VALUES
   (1,'安喜宫绣佛像','工艺','明·成化·《安喜宫绣佛像》绣品。长93.2cm，宽31cm。作于成化七年。安喜宫，是成化年间万贵妃居住的宫殿。她于成化二年进封皇贵妃时开始居住，一直居住至成化二十三年春。万氏（1430-1487），也叫万贞儿，青州诸城人。明宪宗朱见深之妃，颇得宠爱，世称万贵妃。绣，是我囯特有的一种手工制作工艺，用针将彩色的线缝在绸或布上构成图案、花纹和文字。又指绣成的物品。',

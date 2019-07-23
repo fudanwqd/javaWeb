@@ -103,7 +103,7 @@ public class SearchServlet extends HttpServlet {
                 }
                 content+=("</tr>");
             }
-            content+=("<div style='position:absolute;bottom:20px;left:45%; ' >\n" +
+            content+=("<div style='position:absolute;left:45%; ' >\n" +
                     "                    <ul class=\"pagination\">\n" +
                     "                        <li><a href=\"javascript:paging(" + prePage + "," + search + ")\">&laquo;</a></li>");
             for (int i = 0; i < Allpage; i++) {

@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Artwork {
@@ -12,7 +13,7 @@ public class Artwork {
     private int hot;
     private String time;
     private String videoPath;
-    private Date uploadingTime;
+    private Timestamp uploadingTime;
 
 
 
@@ -20,7 +21,7 @@ public class Artwork {
                    String type, String description,
                    String imgPath, String location,
                    int hot, String time,
-                   String videoPath,Date uploadingTime) {
+                   String videoPath, Timestamp uploadingTime) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -88,7 +89,13 @@ public class Artwork {
     public void setHot(int hot) {
         this.hot = hot;
     }
+    public Timestamp getUploadingTime() {
+        return uploadingTime;
+    }
 
+    public void setUploadingTime(Timestamp uploadingTime) {
+        this.uploadingTime = uploadingTime;
+    }
     @Override
     public String toString() {
         return "Artwork{" +
@@ -120,11 +127,5 @@ public class Artwork {
     public void setVideoPath(String videoPath) {
         this.videoPath = videoPath;
     }
-    public Date getUploadingTime() {
-        return uploadingTime;
-    }
 
-    public void setUploadingTime(Date uploadingTime) {
-        this.uploadingTime = uploadingTime;
-    }
 }

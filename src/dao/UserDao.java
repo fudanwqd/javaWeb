@@ -90,7 +90,7 @@ private static User getUserByRs(ResultSet resultSet){
         String password = resultSet.getString(3);
         boolean privilege = resultSet.getBoolean(4);
         String email = resultSet.getString(5);
-        Date recentSignUp = resultSet.getDate(6);
+        Timestamp recentSignUp = resultSet.getTimestamp(6);
         String signature = resultSet.getString(7);
         user = new User(id, name, password,privilege,email,recentSignUp,signature);
     } catch (SQLException e) {
@@ -149,7 +149,7 @@ private static User getUserByRs(ResultSet resultSet){
 
             if (resultSet.next()){
                 entity = new User( resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3)
-                        , resultSet.getBoolean(4), resultSet.getString(5),resultSet.getDate(6)
+                        , resultSet.getBoolean(4), resultSet.getString(5),resultSet.getTimestamp(6)
                         ,resultSet.getString(7));
             }
         } catch (Exception e) {

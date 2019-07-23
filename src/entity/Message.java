@@ -1,22 +1,17 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Message {
     private User sender;
     private User receiver;
     private String messages;
-    private Date date;
+    private Timestamp date;
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
-    public Message(User sender, User receiver, String messages, Date date) {
+    public Message(User sender, User receiver, String messages, Timestamp date) {
         this.sender = sender;
         this.receiver = receiver;
         this.messages = messages;
@@ -45,6 +40,14 @@ public class Message {
 
     public void setMessages(String messages) {
         this.messages = messages;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     public boolean isExit(User a, User b){

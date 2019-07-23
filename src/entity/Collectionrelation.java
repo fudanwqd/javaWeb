@@ -1,14 +1,23 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Collectionrelation {
     private int  userID;
     private int ArtworkID;
     private boolean isPublic;
-    private Date collectTime;
+    private Timestamp collectTime;
 
-    public Collectionrelation(int userID, int artworkID, boolean isPublic, Date collectTime) {
+    public Timestamp getCollectTime() {
+        return collectTime;
+    }
+
+    public void setCollectTime(Timestamp collectTime) {
+        this.collectTime = collectTime;
+    }
+
+    public Collectionrelation(int userID, int artworkID, boolean isPublic, Timestamp collectTime) {
         this.userID = userID;
         ArtworkID = artworkID;
         this.isPublic = isPublic;
@@ -39,11 +48,5 @@ public class Collectionrelation {
         isPublic = aPublic;
     }
 
-    public Date getCollectTime() {
-        return collectTime;
-    }
 
-    public void setCollectTime(Date collectTime) {
-        this.collectTime = collectTime;
-    }
 }

@@ -5,10 +5,7 @@ import entity.Collectionrelation;
 import entity.User;
 import util.DBconnect;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -137,7 +134,7 @@ public class ArtworkDao {
             int hot = resultSet.getInt(7);
             String time = resultSet.getString(8);
             String videoPath = resultSet.getString(9);
-            Date uploadingTime = resultSet.getTime(10);
+            Timestamp uploadingTime = resultSet.getTimestamp(10);
        //     Date uploadingTime = new Date();
             newartwork = new Artwork(id, name, type, description, imgPath, location, hot, time, videoPath, uploadingTime);
         } catch (SQLException e) {
@@ -164,7 +161,7 @@ public class ArtworkDao {
             if (resultSet.next()) {
                 return new Artwork(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)
                         , resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)
-                        , resultSet.getInt(7), resultSet.getString(8), resultSet.getString(9), resultSet.getDate(10));
+                        , resultSet.getInt(7), resultSet.getString(8), resultSet.getString(9), resultSet.getTimestamp(10));
             }
         } catch (Exception e) {
             e.printStackTrace();

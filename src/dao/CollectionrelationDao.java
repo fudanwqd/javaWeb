@@ -4,10 +4,7 @@ import entity.Artwork;
 import entity.Collectionrelation;
 import util.DBconnect;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -91,7 +88,7 @@ public class CollectionrelationDao {
             int userID = resultSet.getInt(1);
             int artworkID = resultSet.getInt(2);
             boolean isPublic = resultSet.getBoolean(3);
-            Date collectTime = resultSet.getTime(4);
+            Timestamp collectTime = resultSet.getTimestamp(4);
             collectionrelation = new Collectionrelation(userID,artworkID,isPublic,collectTime);
         } catch (SQLException e) {
             e.printStackTrace();
