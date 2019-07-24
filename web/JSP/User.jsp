@@ -32,6 +32,12 @@
     <script src="../js/bootstrap-table-treegrid.js"></script>
     <script src="../js/jquery.treegrid.min.js"></script>
     <script src="../js/bootstrap-tab.js"></script>
+    <style>
+        .extra{
+            border: 1px ridge #b3d7ff;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -83,17 +89,19 @@
                         for (FriendsRequest friendsRequest: friendsRequests){
                             if (friendsRequest.getStatus() == 0){
                 %>
-                    <div class="card">
+                    <div class="card extra">
                         <div class="card-view">
                             <img src="../img/1.png" class="img-circle" alt="User Image">
                         </div>
                         <p class="navbar-text myLine">用户名:<%=friendsRequest.getSender().getName()%></p>
                         <p class="navbar-text myLine">电子邮箱:<%=friendsRequest.getSender().getEmail()%></p>
                         <p class="navbar-text myLine">个性签名:<%=friendsRequest.getSender().getSignature()%></p>
+                        <div class="row">
                         <%=
-                        "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=1'><label></label>同 意</a>" +
-                         "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=-1'><label></label>拒 绝</a>"
+                        "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=1'><button>同 意</button></a>" +
+                         "<a href='/requestFriend?id=" + friendsRequest.getSender().getUserID() + "&value=-1'><button>拒 绝</button></a>"
                         %>
+                        </div>
                     </div>
                 <%
                             }

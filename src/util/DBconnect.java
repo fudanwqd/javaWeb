@@ -8,7 +8,7 @@ public class DBconnect {
 //        String user = "root";
 //        String password = "wangqidi";
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/javaweb?serverTimezone=GMT%2B8";
         String user = "root";
         String password = "wangqidi";
 

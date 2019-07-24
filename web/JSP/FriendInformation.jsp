@@ -6,6 +6,9 @@
 <%
     User friend = (User) request.getAttribute("friend");
     List<Artwork> artworksList = (List<Artwork>) request.getAttribute("artworks");
+    if(artworksList==null||friend==null){
+        response.sendRedirect("/JSP/Home.jsp");
+    }else{
 %>
 
 
@@ -31,11 +34,25 @@
     <script src="../js/jquery.treegrid.min.js"></script>
     <script src="../js/bootstrap-tab.js"></script>
     <title><%= friend.getName()%></title>
+    <style>
+        .trs{
+
+        }
+        .collections{
+           text-align: center;
+        }
+        .collectTable{
+            margin:25px;
+            background-color:blanchedalmond;
+            border:1px solid wheat;
+            width:800px;
+        }
+    </style>
 </head>
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<nav class="navbar navbar-default pull-left side navbar-static-top" role="navigation">
+<nav class="navbar navbar-default pull-left side navbar-static-top" style="height: 100%">
     <div class="container-fluid">
         <div class="navbar-header">
             <h2 style="text-align: center">ta的信息</h2>
@@ -49,8 +66,11 @@
     </div>
 </nav>
 
-<div class="text-center">
+<div class="text-center" >
     <h2 style="text-align: center">ta的收藏</h2>
+    <div class="collections">
+
+    <table>
     <%
         if (artworksList != null && artworksList.size() > 0){
             int j = 0;
@@ -60,20 +80,34 @@
                 }
                 j++;
     %>
-    <div class="card-view">
-        <p class="myLine"><a href="/ExhibitionDetailsServlet?id=<%=artworksList.get(i).getId()%>">展品名:<%=artworksList.get(i).getName()%></a></p>
-<%--        <img src="<%=artworksList.get(i).getImgPath()%>" alt="" style="height: 500px;width: 500px">--%>
-    </div>
+<tr class="trs">
+    <td>
+    <table class="collectTable">
+        <tr>
+    <td rowspan="2"><img src="<%=artworksList.get(i).getImgPath()%>" alt="" style="align-self: auto;height: 250px;width: 250px"></td>
+            <td><h4><%=artworksList.get(i).getName()%></h4></td>
+        </tr>
+        <tr>
+            <td><button type="button"><a href="/ExhibitionDetailsServlet?id=<%=artworksList.get(i).getId()%>">详情</a></button></td>
+        </tr>
+    </table>
+    </td>
+        </tr>
+
     <%
-            }
-        }else {
+        }
+    }else {
     %>
-    <h4 style="color: grey;">ta还没有收藏品哦~</h4>
+    <h3 style="color: grey;text-align: center">ta还没有收藏品哦~</h3>
     <%
         }
     %>
+    </table>
+    </div>
 </div>
-
+<%
+    }
+%>
 <body>
 
 </body>

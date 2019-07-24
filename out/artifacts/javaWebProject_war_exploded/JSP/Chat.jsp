@@ -32,6 +32,10 @@
         String sql1 = "SELECT * FROM FRIENDMESSAGES WHERE SENDID = ? OR RECEIVEID = ?";
         Map<User, ArrayList<Message>> chatMessages = getMessages(sql1,user.getUserID());
 
+
+        String sql = "SELECT * FROM FRIENDMESSAGES WHERE SENDID = ?";
+
+
         for (Iterator iter = chatMessages.keySet().iterator(); iter.hasNext();) {
             Object key = iter.next();
             User friend = (User) key;
@@ -46,7 +50,7 @@
             %>
             <br>
                 <%
-                    if (message.getReceiver().equals(user)){
+                    if (message.getReceiver().getUserID() == user.getUserID()){
                 %>
             <div class="row">
                 <div class="col-lg-5">
@@ -55,8 +59,6 @@
                 </div>
                 <div class="col-lg-7"></div>
             </div>
-
-
 
                 <%
                     }else {

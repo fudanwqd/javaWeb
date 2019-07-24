@@ -14,26 +14,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/getFriendInfo")
 public class getFriendInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String sql = "SELECT * FROM USERS WHERE NAME = ?";
-        User friend = UserDao.getUser(sql,name);
-//        String sql1 = "SELECT * FROM COLLECTIONRELATION WHERE USERID = ?";
-//        List<Artwork> artworks = ArtworkDao.selectArtworks(sql1,friend.getUserID());
-        List<Collectionrelation> collections = CollectionrelationDao.selectCollectionById(friend.getUserID());
-        List<Artwork> artworks = ArtworkDao.getFromRelation(collections);
-        request.setAttribute("collections",artworks);
-        request.setAttribute("friend",friend);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/FriendInformation.jsp");
-        requestDispatcher.forward(request,response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      doPost(request,response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        String sql = "SELECT * FROM USERS WHERE id = ?";
+        User friend = UserDao.getUser(sql,id);
+
+        List<Collectionrelation> collectionrelations = CollectionrelationDao.selectCollectionById(id);
+
+        List<Artwork> artworks = new ArrayList<>();
+
+        for (Collectionrelation collectionrelation : collectionrelations){
+            if (collectionrelation.isPublic()){
+                artworks.add(ArtworkDao.SearchById(collectionrelation.getArtworkID()));
+            }
+        }
+
+
+        request.setAttribute("artworks",artworks);
+        request.setAttribute("friend",friend);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/FriendInformation.jsp");
+        requestDispatcher.forward(request,response);
     }
 }

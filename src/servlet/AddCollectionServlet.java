@@ -29,7 +29,7 @@ public class AddCollectionServlet extends HttpServlet {
         session.setAttribute("dynamicArtworks",dynamicArtworks);
         List<User> dynamicFriends = UserDao.dynamicFriends(user);
         session.setAttribute("dynamicFriends",dynamicFriends);
-        response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID);
+        response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID+"&succeed=3");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         doPost(request,response);

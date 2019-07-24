@@ -38,6 +38,6 @@ public class deleteFriendServlet extends HttpServlet {
         List<User> dynamicFriends = UserDao.dynamicFriends(user);
         request.getSession().setAttribute("dynamicFriends",dynamicFriends);
 
-        response.sendRedirect("/JSP/Friends.jsp");
+        response.sendRedirect("/JSP/Friends.jsp?succeed=5");
     }
 }

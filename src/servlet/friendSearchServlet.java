@@ -18,6 +18,7 @@ import java.util.List;
 @WebServlet("/friendSearchServlet")
 public class friendSearchServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+        User user = (User)request.getSession().getAttribute("user");
         String research = request.getParameter("friendsearch");
         HttpSession session = request.getSession();
         List<User> friends = (List<User>)session.getAttribute("myFriends");
@@ -35,17 +36,18 @@ public class friendSearchServlet extends HttpServlet {
                 "    </tr>");
         if(searchFriends.size()>0) {
             for (int i = 0; i < searchFriends.size(); i++) {
+                if(searchFriends.get(i).getUserID()!=user.getUserID()) {
+                    stringBuilder.append("<tr>\n" +
+                            "        <td>" + searchFriends.get(i).getName() + "</td>\n" +
+                            "        <td>" + searchFriends.get(i).getEmail() + "</td>\n" +
+                            "        <td>" + searchFriends.get(i).getSignature() + "</td>\n");
 
-                stringBuilder.append("<tr>\n" +
-                        "        <td>"+searchFriends.get(i).getName()+"</td>\n" +
-                        "        <td>"+searchFriends.get(i).getEmail()+"</td>\n" +
-                        "        <td>"+searchFriends.get(i).getSignature()+"</td>\n");
-
-                if(UserDao.isExistIn(friends,searchFriends.get(i))){
-                    stringBuilder.append("<td><button><a href=\"/getFriendInfo?name="+searchFriends.get(i).getName()+"\">查看</a></button></td></tr>");
-                }else{
-                    stringBuilder.append( "<td><button><a href=\"/sendRequest?id="+searchFriends.get(i).getUserID()+"\">添加好友</a></button></td>\n" +
-                            "    </tr>");
+                    if (UserDao.isExistIn(friends, searchFriends.get(i))) {
+                        stringBuilder.append("<td><button><a href=\"/getFriendInfo?name=" + searchFriends.get(i).getName() + "\">查看</a></button></td></tr>");
+                    } else {
+                        stringBuilder.append("<td><button><a href=\"/sendRequest?id=" + searchFriends.get(i).getUserID() + "\">添加好友</a></button></td>\n" +
+                                "    </tr>");
+                    }
                 }
             }
 

@@ -44,14 +44,17 @@ public class signUpServlet extends HttpServlet {
             page = (String) session.getAttribute("page");
         }
 
-        if (userName.equals("Admin")){
-            password = "123456";
-        }
+//        if (userName.equals("Admin")){
+//            password = "123456";
+//        }
 
         String sql = "SELECT * FROM USERS WHERE NAME = ? AND PASSWORD = ?" ;
         User user = getUser(sql,userName,password);
+//        System.out.println(user.toString());
 
-
+        if(page==null||page.equals("")){
+            page="/JSP/Home.jsp";
+        }
         if (user != null){
             String sqlUpdate = "UPDATE USERS SET RECENTSIGNUP = ? WHERE NAME = ?";
             update(sqlUpdate,new Date(),userName);
@@ -70,7 +73,7 @@ public class signUpServlet extends HttpServlet {
             session.setAttribute("dynamicArtworks",dynamicArtworks);
             session.removeAttribute("page");
             session.removeAttribute("count");
-            response.sendRedirect(page);
+            response.sendRedirect(page+"?succeed=1");
         }else {
             response.sendRedirect("/JSP/SignUp.jsp?error=1");
         }

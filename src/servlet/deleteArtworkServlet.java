@@ -23,6 +23,6 @@ public class deleteArtworkServlet extends HttpServlet {
 
         sql = "DELETE FROM COLLECTIONRELATION WHERE ARTWORKID = ?";
         update(sql,id);
-        response.sendRedirect("/JSP/WorkManage.jsp");
+        response.sendRedirect("/JSP/WorkManage.jsp?succeed=5");
     }
 }

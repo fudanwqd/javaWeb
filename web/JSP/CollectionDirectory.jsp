@@ -10,6 +10,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,10 +57,15 @@
     <table>
         <%
             List<Artwork> collections = (List<Artwork>)request.getAttribute("collections");
-//            List<Boolean> ispublics = (List<Boolean>)request.getAttribute("collectionPublic");
             List<Collectionrelation> collectionrelations = (List<Collectionrelation>)session.getAttribute("mycollections");
-            if(collections!=null&&collections.size()>0){
-                for(int i=0;i<collections.size();i++){
+            if(collections==null){
+                response.sendRedirect("/CollectionDirectoryServlet");
+            }else{
+            if(collections.size()>0){
+//                for(int i=0;i<collections.size();i++){
+                int num=0;
+                for(int i=collections.size()-1;i>=0&&num<15;i--){
+                    num++;
         %>
         <tr>
             <td>
@@ -109,6 +117,7 @@
         <div class="row text-center">暂无藏品！快去收藏一件吧！</div>
         <%
                 }
+
         %>
 
     </table>
@@ -150,6 +159,7 @@
                 %>
         <div class="row text-center">暂无推荐啦！快去搜索一下吧！</div>
         <%
+            }
             }
         %>
     </table>

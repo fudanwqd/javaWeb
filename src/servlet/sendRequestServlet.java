@@ -25,11 +25,22 @@ public class sendRequestServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         int id = Integer.parseInt(request.getParameter("id"));
 
-        String sql = "insert into friendsRequests (senderId,recipientId,status) values(?,?,?)";
-        update(sql,user.getUserID(),id,0);
-        String sqlFriendsRequest = "SELECT * FROM FRIENDSREQUESTS WHERE RECIPIENTID = ?";
-        ArrayList<FriendsRequest> friendsRequests = FriendsRequestDao.getFriendsRequest(sqlFriendsRequest,user.getUserID());
-        request.getSession().setAttribute("friendRequests",friendsRequests);
-        response.sendRedirect("/JSP/Friends.jsp");
+
+        String sql11 = "SELECT * FROM FRIENDSREQUESTS WHERE SENDERID = ? AND RECIPIENTID = ? AND STATUS = ?";
+        ArrayList<FriendsRequest> temp = FriendsRequestDao.getFriendsRequest(sql11,user.getUserID(),id,0);
+
+        if (temp != null && temp.size() > 0){
+            response.sendRedirect("/JSP/Friends.jsp?error=1");
+        }else {
+            String sql = "insert into friendsRequests (senderId,recipientId,status) values(?,?,?)";
+            update(sql,user.getUserID(),id,0);
+            String sqlFriendsRequest = "SELECT * FROM FRIENDSREQUESTS WHERE RECIPIENTID = ?";
+            ArrayList<FriendsRequest> friendsRequests = FriendsRequestDao.getFriendsRequest(sqlFriendsRequest,user.getUserID());
+            request.getSession().setAttribute("friendRequests",friendsRequests);
+            response.sendRedirect("/JSP/Friends.jsp?succeed=4");
+        }
+
+
+
     }
 }

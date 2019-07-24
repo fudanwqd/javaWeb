@@ -19,8 +19,8 @@ public class HomeServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         List<Artwork> hotArtworks = new LinkedList<>();
         List<Artwork> freshArtworks = new LinkedList<>();
-        hotArtworks = ArtworkDao.SearchLimitByOrder("hot",3);
-        freshArtworks = ArtworkDao.SearchLimitByOrder("uploadingTime",3);
+        hotArtworks = ArtworkDao.SearchLimitOrderByHotdesc(0,3);
+        freshArtworks = ArtworkDao.SearchLimitOrderByTimedesc(3);
         request.setAttribute("hotArtworks",hotArtworks);
         request.setAttribute("freshArtworks",freshArtworks);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/JSP/Home.jsp");

@@ -1,7 +1,48 @@
 <%@ page import="entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    String action = request.getParameter("succeed");
+    if (session.getAttribute("user") != null && action != null){
+        switch (action){
+            case "1":
+%>
+<script>
+    alert("登陆成功！");
+</script>
+<%
+          break;
+        case "2":
+%>
+<script>
+    alert("注册成功！");
+</script>
+<%
+            break;
+        case "3":
+%>
+<script>
+    alert("添加成功！");
+</script>
 
+<%
+break;
+        case "4":
+%>
+<script>
+    alert("发送好友请求成功！");
+</script>
+<%
+            break;
+            case "5":
+%>
+<script>
+    alert("删除成功！");
+</script>
+<%
+        }
+        }
+%>
 
 <header class="main-header">
     <a href="/JSP/Home.jsp" class="logo">

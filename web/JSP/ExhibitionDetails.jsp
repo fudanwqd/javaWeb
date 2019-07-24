@@ -132,6 +132,8 @@
 
 </div>
 <%
+    }else{
+        response.sendRedirect("/JSP/Home.jsp");
     }
 %>
 <%--<div style="float: right; width:40%">--%>

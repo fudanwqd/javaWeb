@@ -21,8 +21,14 @@
             let realPassword = hex_md5(password.value);
 
             if (isNameLegal() && isPasswordLegal()) {
-                window.location.href="/signUp?name="+document.getElementById("userName").value+"&password="+
-                    realPassword+"&page=" + page;
+                if (document.getElementById("userName").value === "Admin"){
+                    window.location.href="/signUp?name="+document.getElementById("userName").value+"&password="+
+                        password.value + "&page=" + page;
+                } else {
+                    window.location.href="/signUp?name="+document.getElementById("userName").value+"&password="+
+                        realPassword+"&page=" + page;
+                }
+
             }else {
                 show("error");
             }

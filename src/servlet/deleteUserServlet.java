@@ -31,6 +31,6 @@ doGet(request,response);
         String sqlFriendsMessage = "DELETE FROM FRIENDMESSAGES WHERE SENDID = ? OR RECEIVEID = ?";
         update(sqlFriendsMessage,id,id);
 
-        response.sendRedirect("/JSP/UserManage.jsp");
+        response.sendRedirect("/JSP/UserManage.jsp?succeed=5");
     }
 }

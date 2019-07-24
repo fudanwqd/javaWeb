@@ -128,7 +128,7 @@ public class addArtworkServlet extends HttpServlet {
             String sql = "INSERT INTO ARTWORK(NAME,TYPE,DESCRIPTION,imgPath,location,time,videoPath) VALUES(?,?,?,?,?,?,?)";
             update(sql, info[0], info[1], info[2], info[3], info[4], info[5], info[6]);
 
-            response.sendRedirect("/JSP/WorkManage.jsp");
+            response.sendRedirect("/JSP/WorkManage.jsp?succeed=3");
         } catch (Exception e) {
             e.printStackTrace();
         }

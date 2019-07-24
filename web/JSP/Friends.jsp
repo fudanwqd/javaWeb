@@ -1,7 +1,5 @@
 <%@ page import="entity.User" %>
-<%@ page import="static dao.UserDao.getUser" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dao.UserDao" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -48,12 +46,19 @@
     }
 </style>
 
-<body>
 <%
-    //    User user = (User) session.getAttribute("user");
-    String sql1 = "SELECT * FROM USERS WHERE ID = 1";
-    User user = getUser(sql1);
+    if (request.getParameter("error") != null && request.getParameter("error").equals("1")){
 %>
+<script>
+    alert("不能重复添加好友！")
+</script>
+
+<%
+    }
+%>
+
+<body>
+
 
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -78,32 +83,6 @@
     <div class="text-center"><h4 style="color: grey" >通过关键字去搜索好友吧！</h4></div>
 </table>
     </div>
-<%--<%--%>
-    <%--List<User> searchFriends = (List<User>) request.getAttribute("searchFriends");--%>
-    <%--if(searchFriends!=null){--%>
-    <%--if(searchFriends.size()==0){--%>
-      <%--%>--%>
-    <%--<div class="text-center">没有找到符合的用户哦！ </div>--%>
-    <%--<%--%>
-    <%--}else{--%>
-        <%--for(int i=0;i<searchFriends.size();i++){--%>
-          <%--%>--%>
-    <%--<tr>--%>
-        <%--<td><%=searchFriends.get(i).getName()%></td>--%>
-        <%--<td><%=searchFriends.get(i).getEmail()%></td>--%>
-        <%--<td><%=searchFriends.get(i).getSignature()%></td>--%>
-        <%--<td><button><a href="#">添加好友</a></button></td>--%>
-    <%--</tr>--%>
-    <%--<%--%>
-        <%--}--%>
-    <%--}--%>
-    <%--}else{--%>
-        <%--%>--%>
-    <%--<div class="text-center"><h4 style="color: grey" >通过关键字去搜索好友吧！</h4> </div>--%>
-    <%--<%--%>
-        <%--}--%>
-<%--%>--%>
-<%--</table>--%>
 
 </div>
     <%
@@ -134,7 +113,7 @@
                     <%=dynamicFriends.get(i).getSignature()%>
                 </td>
                 <td>
-                    <button><a href="/sendRequest?id=<%=dynamicFriends.get(i).getUserID()%>">添加好友</a></button>
+                    <button><a href="/sendRequest?id=<%=dynamicFriends.get(i).getUserID()%>">发送请求</a></button>
                 </td>
             </tr>
             <%
@@ -178,7 +157,7 @@
                         </form>
                         <%=
                         "<a href='/deleteFriend?id=" + tempUser.getUserID() + "' <button class='btn btn-default btn-primary'>删 除</button></a>" +
-                        "<a href='/getFriendInfo?name=" + tempUser.getName() + "' <button class='btn btn-default btn-primary'>查 看</button></a>"
+                        "<a href='/getFriendInfo?id=" + tempUser.getUserID() + "' <button class='btn btn-default btn-primary'>查 看</button></a>"
                         %>
                     </div>
 

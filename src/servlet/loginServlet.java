@@ -51,9 +51,9 @@ public class loginServlet extends HttpServlet {
             if (page.equals("1")) {
                 User user = getUser(sql, userName);
                 session.setAttribute("user", user);
-                response.sendRedirect("/JSP/Home.jsp");
+                response.sendRedirect("/JSP/Home.jsp?succeed=2");
             }else {
-                response.sendRedirect("/JSP/UserManage.jsp");
+                response.sendRedirect("/JSP/UserManage.jsp?succeed=3");
             }
         }
 

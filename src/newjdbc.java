@@ -15,7 +15,7 @@ import java.util.Properties;
 public class newjdbc  {
     public static void testDriver() throws SQLException{
 
-        ArtworkDao.SearchLimitByOrder("hot",3);
+//        ArtworkDao.SearchLimitByOrder("hot",3);
 
 
 //        Properties info = new Properties();

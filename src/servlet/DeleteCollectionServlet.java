@@ -28,7 +28,7 @@ public class DeleteCollectionServlet extends HomeServlet {
         session.setAttribute("dynamicArtworks",dynamicArtworks);
         List<User> dynamicFriends = UserDao.dynamicFriends(user);
         session.setAttribute("dynamicFriends",dynamicFriends);
-        response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID);
+        response.sendRedirect("/ExhibitionDetailsServlet?id="+artworkID+"&succeed=5");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
         doPost(request,response);

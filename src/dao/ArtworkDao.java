@@ -60,12 +60,21 @@ public class ArtworkDao {
     }
 
 
-    public static List<Artwork> SearchLimitByOrder(String type, int limit) {
+//    public static List<Artwork> SearchLimitByOrder(String type, int limit) {
+//        List<Artwork> artworks = new LinkedList<>();
+//        artworks = selectArtworks("select * from artwork order by ? desc limit 0 , ?", type, limit);
+//        return artworks;
+//    }
+//    public static List<Artwork> SearchLimitOrderByHotdesc(int limit) {
+//        List<Artwork> artworks = new LinkedList<>();
+//        artworks = selectArtworks("select * from artwork order by hot desc limit 0 , ?",limit);
+//        return artworks;
+//    }
+    public static List<Artwork> SearchLimitOrderByTimedesc(int limit) {
         List<Artwork> artworks = new LinkedList<>();
-        artworks = selectArtworks("select * from artwork order by ? desc limit 0 , ?", type, limit);
+        artworks = selectArtworks("select * from artwork order by uploadingTime desc limit 0 , ?",limit);
         return artworks;
     }
-
     public static Artwork SearchById(int id) {
         List<Artwork> artworks = new LinkedList<>();
         artworks = selectArtworks("select * from artwork where id = ?", id);
@@ -204,7 +213,7 @@ public class ArtworkDao {
         int num =0;
         for (int i=0;i<ones.size();i++){
             String type = ones.get(i).getType();
-            for(int j=0;i<anothers.size();j++){
+            for(int j=0;j<anothers.size();j++){
                 if(type.equals(anothers.get(j).getType())){
                     num++;
                     break;
